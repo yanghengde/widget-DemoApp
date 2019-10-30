@@ -1,0 +1,8 @@
+VERSION '01.12'
+
+PUBLISH COMMAND Siemens.Mom.Presales.Training.MasterData.DemoLib.MSModel.Commands.CreatePerson AS CreatePerson
+PUBLISH COMMAND Siemens.Mom.Presales.Training.MasterData.DemoLib.MSModel.Commands.CreateTeam AS CreateTeam
+PUBLISH COMMAND Siemens.Mom.Presales.Training.MasterData.DemoLib.MSModel.Commands.DeletePerson AS DeletePerson
+PUBLISH COMMAND Siemens.Mom.Presales.Training.MasterData.DemoLib.MSModel.Commands.DeleteTeam AS DeleteTeam
+PUBLISH COMMAND Siemens.Mom.Presales.Training.MasterData.DemoLib.MSModel.Commands.UpdatePerson AS UpdatePerson
+PUBLISH COMMAND Siemens.Mom.Presales.Training.MasterData.DemoLib.MSModel.Commands.UpdateTeam AS UpdateTeam

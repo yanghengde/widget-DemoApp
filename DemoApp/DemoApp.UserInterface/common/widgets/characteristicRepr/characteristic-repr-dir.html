@@ -1,0 +1,79 @@
+<div>
+
+
+    <div class="row characteristic-repr">
+        <div class="col-md-40" ng-show="!vm.isenabled">
+            <h4>This directive requires Workinstrucion App installed and running</h4>
+        </div>
+        <div id="itemlist" ng-if="vm.isenabled" class="col-md-11 col-sm-11" style="min-width:290px">
+            <sit-item-collection-viewer sit-data="vm.viewerData" sit-options="vm.viewerOptions"></sit-item-collection-viewer>
+        </div>
+
+        <div class="col-md-17 col-sm-17" style="padding-left: 10px;">
+            <div ng-show="vm.IsVariable" class="column-container">
+                <p class="medium-title-display">{{vm.Label}}</p>
+                <div class="column-form-content">
+                    <label class="property-label" for="quantitysample">Quantity</label>
+                    <div style="position: relative;float: left;width: 100%;">
+                        <input type="number" id="quantitysample" ng-model="vm.Quantity" step="0.01" ng-blur="vm.SaveSample()" ng-focus="vm.InitSample($event)" ng-change="vm.ValueChanged()" class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-valid-minlength ng-valid-maxlength validator-control" />
+                        <i class="sgnInfoBadgeMignon" ng-style="{'display': vm.DisplayInfoBadge? 'block' : 'none'}" style="background-color: #FADC5A; color:#1E1E1E; top: 7.5px; right: 22.5px; position: absolute;" aria-hidden="true">i</i>
+                    </div>
+                </div>
+                <!--<button ng-click="vm.SaveSample()">{{'common.save'|translate}}</button>-->
+            </div>
+            <div ng-show="vm.IsAttributive" class="column-container">
+                <p class="medium-title-display">{{vm.Label}}</p>
+                <div class="column-form-content">
+                    <table style="width: 100%">
+                        <tr>
+                            <td><p class="light-title-display">{{vm.Specification.CharacteristicSpecification.OKDescription}}</p></td>
+                            <td><p class="light-title-display">{{vm.Specification.CharacteristicSpecification.NOKDescription}}</p></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="radio-container">
+                                    <input type="radio" id="okdescriptionid" ng-model="vm.HasAttribute" ng-value="true" ng-click="vm.SaveSample()" />
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="radio-container">
+                                    <input type="radio" id="notokdescriptionid" ng-model="vm.HasAttribute" ng-value="false" ng-click="vm.SaveSample()" />
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!--<button ng-click="vm.SaveSample()">{{'common.save'|translate}}</button>-->
+            </div>
+            <div ng-show="vm.IsVisual" class="column-container">
+                <p class="medium-title-display">{{vm.Label}}</p>
+                <div class="column-form-content">
+                    <div ng-repeat="failure in vm.Specification.CharacteristicSpecification.CharacterisicFailureAssociations" style="margin-bottom: 8px;position: relative">
+                        <label class="property-label" for="failure_{{failure.NId}}" style="max-width: 45%;">{{failure.Name}}</label><i ng-if="failure.Description" class="fa fa-question-circle-o icon-tooltip" ng-mouseover="vm.SetTooltipPosition()"></i><div class="icon-container"><p class="icon-text">{{failure.Description}}</p><div class="icon-arrow"></div></div><sup ng-if="failure.Description" class="icon-star">*</sup>
+                        <input class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-pattern ng-valid-minlength ng-valid-maxlength validator-control" type="number" id="failure_{{failure.NId}}" ng-blur="vm.SaveVisualSample()" />
+                    </div>
+                </div>
+            </div>            
+        </div>
+        <div class="col-md-10 col-sm-10" ng-show="vm.IsAttributive || vm.IsVariable || vm.IsVisual" style="padding-left: 10px;">
+            <div class="column-container">
+                <p class="medium-title-display">{{vm.Details}}</p>
+                <div class="column-form-content">
+                    <sit-property-grid id="propertyGridForm"
+                                       sit-data="vm.propertyGridData"
+                                       sit-layout="Vertical"
+                                       sit-type="Fixed"
+                                       sit-mode="list">
+
+                    </sit-property-grid>
+                </div>
+                <fieldset ng-show="vm.IsVariable&&vm.notifyViolations" id="legend" style="background-color: unset; border: 0px; margin-top: 4px; padding: 0px; width: 310px;">
+                    <legend style="border:0px; background:none; border-bottom:0px; font-weight: bold; padding:0px; margin-bottom: 16px">Legenda</legend>
+                    <i class="sgnInfoBadgeMignon" style="background-color: #FADC5A; color:#1E1E1E;" aria-hidden="true">!</i>
+                    <span style="font-size:12px; margin-left: 3px;">{{'characteristicRepr.LegendaMessage'|translate}}</span>
+                </fieldset>
+            </div>
+    </div>
+</div>

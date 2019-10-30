@@ -1,0 +1,10 @@
+<div class="vector-canvas">
+    <div ng-bind-html="$ctrl.finalSVG" class="vector-view"></div>
+</div>
+
+<div ng-if="$ctrl.isVectorFullScreenMode" id="vector-full-screen" class="full-vector-background">
+    <div class="vector-fullscreen-header">
+        <em class="fa fa-times" aria-hidden="true" title="Close" ng-click="$ctrl.toggleFullScreen()"></em>
+    </div>
+    <div ng-bind-html="$ctrl.finalSVG" class="full-screen-vector"></div>
+</div>

@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html ng-class="{'touch': $root.isTouchDevice}">
+<head>
+    <title data-ng-bind="title"> Simatic IT Project Studio (Seeds) </title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <link ng-repeat="styleSheet in $root.currentTheme.styleSheets" ng-href="{{styleSheet}}" rel="stylesheet">
+</head>
+<body>
+    <div class="table-layout fullh">
+        <div class="table-row">
+            <header class="top">
+                <div data-ng-include="'common/components/header/header.tpl.html'"></div>
+            </header>
+        </div>
+        <div ui-view="FullScreenView" ng-show="$root.layoutMode === 'full'"></div>
+        <div class="table-row fullh" ng-show="$root.layoutMode === 'normal'">
+            <div class="sidebar-container" h-adapter ng-hide="$root.$state.current.data.sideBarIsHidden">
+                <sit-sidebar>
+                    <div class="sidebar-body">
+                        <div ng-style="sidebar.calc(sidebar.header.length, 32)">
+                            <sit-sidebar-item sit-type="header" sit-source="sidebar.header" sit-actions="sidebar.actions">
+                            </sit-sidebar-item>
+                        </div>
+                        <div ng-style="sidebar.calc(sidebar.activeItemsCount(sidebar.fixed), 48)">
+                            <sit-sidebar-item sit-type="fixed" sit-source="sidebar.fixed" sit-selected="sidebar.selected">
+                            </sit-sidebar-item>
+                        </div>
+                        <div ng-style="sidebar.calc('100%',sidebar.header.length, 32,sidebar.activeItemsCount(sidebar.fixed), 48, 1, 48)">
+                            <sit-sidebar-item sit-source="sidebar.menu" sit-selected="sidebar.selected" sit-environment="sidebar.environment">
+                            </sit-sidebar-item>
+                        </div>
+                        <div class="message" ng-if="sidebar.errorMessage" ng-bind="sidebar.errorMessage"></div>
+                    </div>
+                </sit-sidebar>
+            </div>
+            <div data-ng-include="'common/layout/shell/shell.tpl.html'" class="canvas-container"></div>
+        </div>
+    </div>
+    <sit-help-window></sit-help-window>
+    <sit-overlay sit-modalid="globalMsgOverlayId" sit-modaltext="$root.globalOverlayData.text" sit-title="$root.globalOverlayData.title" sit-buttons="$root.globalOverlayData.buttons"></sit-overlay>
+    <sit-busy-indicator sit-message="$root.globalBusyIndicator.message" sit-icon="$root.globalBusyIndicator.icon" sit-delay="$root.globalBusyIndicator.delay" indicatorid="{{$root.globalBusyIndicator.id}}"></sit-busy-indicator>
+    <div data-sit-notification-tile data-sit-tile-title="'Info'" data-sit-tile-content="''" data-sit-tile-type="'info'" data-sit-tile-counter="" data-sit-tile-click="" data-sit-tile-popup="true" data-sit-tile-global="true" id="appLevelNotificationTile"></div>
+
+    <script src="common/common.vendor.min.js"></script>
+    <script src="common/common.min.js"></script>
+
+    <script src="app.js"></script>
+</body>
+</html>

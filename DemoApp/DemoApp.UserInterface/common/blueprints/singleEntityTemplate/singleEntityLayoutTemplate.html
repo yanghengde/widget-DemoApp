@@ -1,0 +1,12 @@
+
+<div class="content-area content-area-relative" style="height:100% !important" id="singleEntityLayout" ng-if="vm.isInitComplete">
+    <h2>{{vm.screenTitle}}</h2>
+    <div ng-if="vm.isDrillDownState" class="mduiBreadcrumb mduiBreadcrumbPadding"> <sit-breadcrumb></sit-breadcrumb></div>
+    <div style="display:inline-block;vertical-align:top;float:right;height:100%;">
+        <sit-command-bar sit-commands="vm.newObj.actions" sit-layout="vertical"></sit-command-bar>
+    </div>
+    <div id="masterList" class="mduiSingleEntity"
+         ng-style="{'height': (vm.isDrillDownState != true) ? 'calc(100% - 16px)': 'calc(100% - 61px)'}">
+        <sit-item-collection-viewer sit-data="vm.newObj.master.runtimeData" sit-options="vm.newObj.master.runtimeConf"></sit-item-collection-viewer>
+    </div>
+</div>

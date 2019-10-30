@@ -1,0 +1,10 @@
+VERSION '01.12'
+
+[@Guid(933b8b35-5dd7-42c9-8c9f-ec66fac9e366)]
+[@GuidRef(51ca7574-1b4f-4b02-81cf-c40010726991, a4100acb-98ee-4a42-98cb-7bb1bb9953c4)]
+ENTITYLINK Person TO Siemens.Mom.Presales.Training.MasterData.DemoLib.MSModel.DataModel.Person
+
+[@Guid(064c30d0-29c9-4f7f-a50c-b9e3a94a844d)]
+[@GuidRef(51ca7574-1b4f-4b02-81cf-c40010726991, 5eb11671-25c8-42c7-8100-0ab148f45547)]
+ENTITYLINK Team TO Siemens.Mom.Presales.Training.MasterData.DemoLib.MSModel.DataModel.Team
+

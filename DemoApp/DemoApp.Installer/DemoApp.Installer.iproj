@@ -1,0 +1,87 @@
+﻿<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>c8ffc2c3-ebae-495d-a767-0426946d6a43</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Siemens.Mom.Presales.Training.DemoApp.Installer</RootNamespace>
+    <AssemblyName>Siemens.Mom.Presales.Training.DemoApp.Installer</AssemblyName>
+    <Name>DemoApp.Installer</Name>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FunctionalBlockType>Project</FunctionalBlockType>
+    <FunctionalBlockVersion>01.00.00</FunctionalBlockVersion>
+    <FunctionalBlockName>DemoApp</FunctionalBlockName>
+    <FunctionalBlockPrefix>Siemens.Mom.Presales.Training</FunctionalBlockPrefix>
+    <FunctionalBlockModels>Siemens.Mom.Presales.Training.DemoApp.DemoApp.DAPOMModel</FunctionalBlockModels>
+    <FunctionalBlockDescription>
+    </FunctionalBlockDescription>
+    <SitPlatformVersion>3.0</SitPlatformVersion>
+    <AutoDeployPackage>True</AutoDeployPackage>
+    <CanBeExtended>False</CanBeExtended>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU'  ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Config" />
+    <Folder Include="ExternalDependencies" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\Siemens.Mom.Presales.Training.DemoApp.Dbinit.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\Siemens.Mom.Presales.Training.DemoApp.References.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\Siemens.Mom.Presales.Training.DemoApp.ApplicationLog.en-US.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DemoApp.CommandHandler\DemoApp.CommandHandler.csproj">
+      <Name>DemoApp.CommandHandler</Name>
+      <Project>{40f934c6-c065-41d9-a2c1-055acef547ad}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DemoApp.DAPOMModel\DemoApp.DAPOMModel.pmproj">
+      <Name>DemoApp.DAPOMModel</Name>
+      <Project>{d0dd6957-2522-4247-a788-fc2fbe4cb235}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DemoApp.EventHandler\DemoApp.EventHandler.csproj">
+      <Name>DemoApp.EventHandler</Name>
+      <Project>{f3bd8347-fc20-4889-b466-d80f2c449bd8}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DemoApp.ReadingFunctionHandler\DemoApp.ReadingFunctionHandler.csproj">
+      <Name>DemoApp.ReadingFunctionHandler</Name>
+      <Project>{a32e555b-dd5f-4f0b-bfd9-38201631b4be}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DemoApp.UserInterface\DemoApp.UserInterface.csproj">
+      <Name>DemoApp.UserInterface</Name>
+      <Project>{035409cf-3b7e-495f-acc2-62324752b9ba}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(SITUnifiedVSToolingPlatformBin)\Siemens.SimaticIt.Build.Installer.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

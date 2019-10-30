@@ -1,0 +1,55 @@
+<div class="property-grid-input-group">
+    <div class="label label-property-grid-control-readonly property-value-ellipsis" ng-if="dateTimePickerCtrl.readOnly || dateTimePickerCtrl.ngReadonly">
+        {{dateTimePickerCtrl.value | date: 'medium'}}
+    </div>
+</div>
+
+<ng-form name='dateTimePickerForm' ng-if="!(dateTimePickerCtrl.readOnly || dateTimePickerCtrl.ngReadonly)"
+         ng-class="{'isrequired' : (dateTimePickerCtrl.validation.required) && (dateTimePickerCtrl.value===undefined)}">
+    <div class="property-grid-input-group">
+        <div class="property-grid-input-group">
+            <input type="text"
+                   class="property-grid-control validator-control date-time-input-hover"
+                   ng-model="dateTimePickerCtrl.value"
+                   uib-datepicker-popup="{{dateTimePickerCtrl.format}}"
+                   ng-class="{'validator-control-invalid':((dateTimePickerForm.$invalid && dateTimePickerForm.$dirty) || (dateTimePickerForm.$invalid && dateTimePickerForm.$visited)),
+               'validator-control':!((dateTimePickerForm.$invalid && dateTimePickerForm.$dirty) || (dateTimePickerForm.$invalid && dateTimePickerForm.$visited)),
+               'ng-dirty':dateTimePickerForm.$dirty}"
+                   ng-click="dateTimePickerCtrl.clicked()"
+                   ng-keydown="dateTimePickerCtrl.keydownPressed($event)"
+                   ng-disabled="dateTimePickerCtrl.ngDisabled"
+                   ng-required="dateTimePickerCtrl.validation.required"
+                   sit-change="dateTimePickerCtrl.sitChange"
+                   sit-form-input-validator
+                   readonly="readonly" />
+            <div class="btn property-grid-addon-icon" ng-click="dateTimePickerCtrl.ngDisabled || dateTimePickerCtrl.clicked()" ng-disabled="dateTimePickerCtrl.ngDisabled">
+                <em class="fa fa-calendar"></em>
+            </div>
+        </div>
+
+        <div class="dropdown-menu" ng-style="{display: (dateTimePickerCtrl.isOpen && 'block') || 'none'}">
+            <div class="date-time-icon">
+                <button type="button" class="date-time-icon-btn" ng-click="dateTimePickerCtrl.switchDateTimePicker()"><em ng-class="dateTimePickerCtrl.isCollapsed ? 'fa fa-clock-o fa-lg' : 'fa fa-calendar-o fa-lg' "></em></button>
+            </div>
+
+            <div id="datepicker" sit-data-internal-type="datepicker" uib-collapse="!dateTimePickerCtrl.isCollapsed">
+                <div uib-datepicker ng-model="dateTimePickerCtrl.value" datepicker-options="dateTimePickerCtrl.dateOptions">
+                </div>
+            </div>
+
+            <div id="timepicker" sit-data-internal-type="timepicker" uib-collapse="dateTimePickerCtrl.isCollapsed">
+                <div uib-timepicker ng-model="dateTimePickerCtrl.value" show-seconds="dateTimePickerCtrl.showSeconds" show-meridian="dateTimePickerCtrl.showMeridian" class="time-picker-centered">
+                </div>
+            </div>
+
+            <div class="uib-button-bar" ng-class="{'pull-center' : !dateTimePickerCtrl.showButtonBar}">
+                <span class="pull-left btn-group" ng-show="dateTimePickerCtrl.showButtonBar">
+                    <button type="button" class="btn btn-sm btn-info" ng-click="dateTimePickerCtrl.today()">{{dateTimePickerCtrl.buttonLabel}}</button>
+                    <button type="button" class="btn btn-sm btn-danger" ng-click="dateTimePickerCtrl.clear()">{{dateTimePickerCtrl.clearLabel}}</button>
+                </span>
+                <button type="button" ng-class="{'pull-right' : dateTimePickerCtrl.showButtonBar}" class="btn btn-sm btn-success" ng-click="dateTimePickerCtrl.close()">{{dateTimePickerCtrl.closeLabel}}</button>
+            </div>
+
+        </div>
+    </div>
+</ng-form>

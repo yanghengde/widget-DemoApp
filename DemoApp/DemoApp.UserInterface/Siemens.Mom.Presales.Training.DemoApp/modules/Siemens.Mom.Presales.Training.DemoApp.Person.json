@@ -1,0 +1,17 @@
+{
+  "name": "Siemens.Mom.Presales.Training.DemoApp.Person",
+  "type": "standard",
+  "title": "Person",
+  "icon": "fa-folder",
+  "functionalBlock": "Siemens.Mom.Presales.Training.DemoApp",
+  "dependencies": [],
+  "states": [
+    {
+      "id": "home.Siemens_Mom_Presales_Training_DemoApp_Person_PersonScreen",
+      "title": "PersonScreen",
+      "securable": true,
+      "roles": []
+    }
+  ],
+  "manifestVersion": "01.00.00"
+}

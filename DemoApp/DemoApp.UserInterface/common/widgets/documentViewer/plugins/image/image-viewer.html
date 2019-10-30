@@ -1,0 +1,7 @@
+<div class="image-canvas" ng-click="$ctrl.showFullScreen()">
+    <img alt="" ng-src="{{$ctrl.source}}" />
+</div>
+
+<div ng-if="$ctrl.isImageFullScreenMode" id="full-screen-image" class="full-image-background">
+    <img alt="" ng-src="{{$ctrl.source}}" class="full-screen-image" />
+</div>

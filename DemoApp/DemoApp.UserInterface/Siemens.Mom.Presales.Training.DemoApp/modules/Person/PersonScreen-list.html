@@ -1,0 +1,31 @@
+﻿<div id="itemlistContainer" class="content-area content-area-relative" style="width:100%; height:100%;overflow: hidden">
+    <sit-command-bar sit-type="action" sit-layout="vertical" style="float:right; height: 100%">
+        <sit-command svg-icon="common/icons/cmdEdit24.svg"
+                     sit-name="com.siemens.customcommand.edit"
+                     sit-tooltip="Edit"
+                     ng-click="vm.editButtonHandler"
+                     sit-label="Edit"
+                     ng-show="vm.isButtonVisible"></sit-command>
+        <sit-command svg-icon="common/icons/cmdInfo24.svg"
+                     sit-name="com.siemens.customcommand.view"
+                     sit-tooltip="View"
+                     ng-click="vm.selectButtonHandler"
+                     sit-label="View"
+                     ng-show="vm.isButtonVisible"></sit-command>
+        <sit-command svg-icon="common/icons/cmdTrash24.svg"
+                     sit-name="com.siemens.customcommand.delete"
+                     sit-tooltip="Delete"
+                     ng-click="vm.deleteButtonHandler"
+                     sit-label="Delete"
+                     ng-show="vm.isButtonVisible"></sit-command>
+        <sit-command svg-icon="common/icons/cmdAdd24.svg"
+                     sit-name="com.siemens.customcommand.add"
+                     ng-click="vm.addButtonHandler"
+                     sit-tooltip="Add"
+                     sit-label="Add"
+                     sit-type="main"></sit-command>
+    </sit-command-bar>
+    <div id="itemlist" style="width:calc(100% - 56px); height: calc(100% - 16px); padding:16px 16px 0 16px">
+        <sit-item-collection-viewer sit-data="vm.viewerData" sit-options="vm.viewerOptions"></sit-item-collection-viewer>
+    </div>
+</div>

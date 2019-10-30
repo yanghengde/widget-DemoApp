@@ -1,0 +1,71 @@
+<div class="side-panel-container">
+    <div class="side-panel-top">
+        <div class="side-panel-header">
+            <div class="side-panel-header-text">{{sidepanelCtrl.title}}</div>
+            <div style="display:flex; align-items:center">
+                <button type="button" class="side-panel-max-btn" ng-if="!sidepanelCtrl.isMinimizeDisabled && sidepanelCtrl.iscollapseButtonShown && sidepanelCtrl.isContentMinimizable" ng-click="sidepanelCtrl.toggleSidePanelContent()"
+                        title="{{sidepanelCtrl.collapseButtonTooltip}}">
+                    <span class="side-panel-min-img side-panel-mom-button" ng-show="!sidepanelCtrl.isMaximized" sit-class="side-panel-mom-button" sit-mom-icon="sidepanelCtrl.maximizePanel" aria-hidden="true" ng-class="{momIcon: sidepanelCtrl.maximizePanel !== null }"></span>
+                    <span class="side-panel-min-img side-panel-mom-button" ng-show="sidepanelCtrl.isMaximized" sit-class="side-panel-mom-button" sit-mom-icon="sidepanelCtrl.minimizePanel" aria-hidden="true" ng-class="{momIcon: sidepanelCtrl.minimizePanel !== null }"></span>
+                </button>
+                <button type="button" class="side-panel-close-btn" ng-show="sidepanelCtrl.isCloseButtonShown" ng-click="sidepanelCtrl.closeSidepanel()" title="{{sidepanelCtrl.closeButtonTooltip}}">
+                    <span class="fa fa-times side-panel-close-img" sit-class="side-panel-mom-button" sit-mom-icon="sidepanelCtrl.closePanel" aria-hidden="true" ng-class="{momIcon: sidepanelCtrl.closePanel !== null }"></span>
+                </button>
+            </div>
+        </div>
+
+        <div class="side-panel-commands" ng-class="{'sidepanel-contextual-command':(sidepanelCtrl.commandButtons && sidepanelCtrl.commandButtons.length === 0)}" 
+             ng-if="(sidepanelCtrl.commandButtons && sidepanelCtrl.commandButtons.length !== 0)">
+            <sit-command-bar sit-commands="sidepanelCtrl.ContextualCommandButtons" sit-layout="contextual"></sit-command-bar>
+        </div>
+       
+    </div>
+
+    <div class="side-panel-content" ng-class="{contentHeight:'content-height',contentCommandHeight:'content-command-height',contentActionHeight:'content-action-height',contentButtonHeight:'content-button-height'}[sidepanelCtrl.contentClassType]">
+        <div class="side-panel-notification-area" ng-repeat="message in sidepanelCtrl.messages | filter : { text : '!!' }" ng-if="message.text.length !== 0">
+            <p class="side-panel-message" ng-class="{
+                   'admonition admonition-warning':message.type=='warning',
+                   'admonition admonition-info':message.type=='info'}">
+                <span>{{message.text}}</span>
+            </p>
+        </div>
+        <div class="side-panel-custom" ng-transclude></div>
+    </div>
+
+    <div class="side-panel-bottom" ng-if="(sidepanelCtrl.actionButtons && sidepanelCtrl.actionButtons.length !== 0)">
+        <ul class="side-panel-actions">
+            <li class="btn-group dropdown-action-menu" ng-show="sidepanelCtrl.displayDropdownActions">
+                <button data-toggle="dropdown" title="Other commands" class="dropdown-toggle dropdown-action-button">
+                    <div style="display:inline">
+                        <span class="fa-stack fa-lg">
+                            <em class="fa fa-bars fa-stack "></em>
+                        </span>
+                        <div class="caret"></div>
+                    </div>
+                </button>
+
+                <ul class="dropdown-menu" role="menu" data-toggle="dropdown">
+                    <li ng-repeat="action in sidepanelCtrl.actionButtons.slice().reverse()" ng-show="$index<=sidepanelCtrl.maxIndexNumberActions">
+                        <div ng-show="action.visible">
+                            <button data-internal-type="command-button-command-bar" ng-class="{'last-action-button':($last && sidepanelCtrl.actionButtons.length>1)}"
+                                    class="menu-action-button"
+                                    ng-click="action.onClick()" title="{{action.tooltip || action.label}}" ng-disabled="!action.enabled">
+                                <span data-internal-type="text-container">{{action.label}}</span>
+                            </button>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li ng-repeat="action in sidepanelCtrl.actionButtons.slice().reverse()">
+                <div ng-show="(!sidepanelCtrl.displayDropdownActions || ($index>sidepanelCtrl.maxIndexNumberActions)) && action.visible ">
+                    <button data-internal-type="command-button-command-bar" ng-class="{'last-action-button':($last && sidepanelCtrl.actionButtons.length>1)}"
+                            class="bottom-action-button"
+                            ng-click="action.onClick()" title="{{action.tooltip || action.label}}" ng-disabled="!action.enabled">
+                        <span data-internal-type="text-container">{{action.label}}</span>
+                    </button>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+</div>
