@@ -13,10 +13,10 @@
                 appPrefix: 'Siemens.Mom.Presales.Training',
                 // TODO: Customize the entityName with the name of the entity defined in the App you want to manage within the UI Module.
                 //       Customize the command name with the name of the command defined in the App you want to manage within the UI Module
-                entityName: null,
-                createPublicName: null,
-                updatePublicName: null,
-                deletePublicName: null
+                entityName: 'Team',
+                createPublicName: 'CreateTeam',
+                updatePublicName: 'UpdateTeam',
+                deletePublicName: 'DeleteTeam'
             }
         };
     }
@@ -47,7 +47,7 @@
         function createEntity(data) {
             // TODO: Customize the mapping between "UI entity" and the "DB entity" that will create 
             var obj = {
-                'Id': data.Id
+                'Team':{'Name':data.Name,'Description':data.Description,'Number':data.Number },'IsActive':data.IsActive,'IsLeader':data.IsLeader
             };
             return execCommand(context.data.createPublicName, obj);
         }
@@ -55,7 +55,7 @@
         function updateEntity(data) {
             // TODO: Customize the mapping between "UI entity" and the "DB entity" that will create
             var obj = {
-                'Id': data.Id
+                'Id': data.Id,'Team':{'Name':data.Name,'Description':data.Description,'Number':data.Number },'IsActive':data.IsActive,'IsLeader':data.IsLeader
             };
             return execCommand(context.data.updatePublicName, obj);
         }

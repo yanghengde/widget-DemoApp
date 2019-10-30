@@ -21,7 +21,7 @@
     <IISExpressUseClassicPipelineMode />
     <Name>DemoApp.UserInterface</Name>
     <FunctionalBlockType>Project</FunctionalBlockType>
-    <FunctionalBlockVersion>01.00.00</FunctionalBlockVersion>
+    <FunctionalBlockVersion>01.01.01</FunctionalBlockVersion>
     <FunctionalBlockName>DemoApp</FunctionalBlockName>
     <FunctionalBlockPrefix>Siemens.Mom.Presales.Training</FunctionalBlockPrefix>
     <SitPlatformVersion>3.0</SitPlatformVersion>
@@ -105,8 +105,10 @@
     <Content Include="Siemens.Mom.Presales.Training.DemoApp\modules\Siemens.Mom.Presales.Training.DemoApp.Team.json" />
     <Content Include="Siemens.Mom.Presales.Training.DemoApp\modules\Siemens.Mom.Presales.Training.DemoApp.Person.json" />
     <Content Include="Siemens.Mom.Presales.Training.DemoApp\resources\resources.json" />
-    <Content Include="Siemens.Mom.Presales.Training.DemoApp\resources\Siemens.Mom.Presales.Training.Person.json" />
-    <Content Include="Siemens.Mom.Presales.Training.DemoApp\resources\Siemens.Mom.Presales.Training.Team.json" />
+    <Content Include="Siemens.Mom.Presales.Training.DemoApp\resources\Siemens.Mom.Presales.Training.Person.en-US.json" />
+    <Content Include="Siemens.Mom.Presales.Training.DemoApp\resources\Siemens.Mom.Presales.Training.Team.en-US.json" />
+    <Content Include="Siemens.Mom.Presales.Training.DemoApp\resources\Siemens.Mom.Presales.Training.Person.zh-CN.json" />
+    <Content Include="Siemens.Mom.Presales.Training.DemoApp\resources\Siemens.Mom.Presales.Training.Team.zh-CN.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

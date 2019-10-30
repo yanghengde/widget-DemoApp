@@ -9,9 +9,25 @@
                        sit-mode="edit"
                        sit-columns="1">
         <!-- TODO: Put here the properties of the entity managed by the service -->
-        <sit-property sit-widget="sit-text"
-                      sit-value="vm.currentItem.Id"
+         <sit-property sit-widget="sit-text"
+                      sit-value="vm.currentItem.Name"
                       sit-validation="{required: true}"
-                      sit-read-only="false">ID:</sit-property>
+                      sit-read-only="false">Name:</sit-property>
+         <sit-property sit-widget="sit-text"
+                      sit-value="vm.currentItem.Description"
+                      sit-validation="{required: true}"
+                      sit-read-only="false">Description:</sit-property>
+         <sit-property sit-widget="sit-numeric"
+                      sit-value="vm.currentItem.Number"
+                      sit-validation="{required: true}"
+                      sit-read-only="false">Number:</sit-property>
+          <sit-property sit-widget="sit-checkbox"
+                      sit-value="vm.IsLeader"
+                      sit-validation="{required: false}"
+                      sit-read-only="false">IsLeader:</sit-property>
+           <sit-property sit-widget="sit-checkbox"
+                      sit-value="vm.IsActive"
+                      sit-validation="{required: false}"
+                      sit-read-only="false">IsActive:</sit-property>
     </sit-property-grid>
 </div>

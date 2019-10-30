@@ -28,6 +28,22 @@
             //Expose Model Methods
             self.save = save;
             self.cancel = cancel;
+            self.IsActive = getIsActiveValue();
+            self.IsLeader = getIsLeaderValue();
+        }
+
+        function getIsActiveValue(){
+            return [{
+                label: "IsActive",
+                checked: self.currentItem.IsActive
+              }];
+        }
+
+        function getIsLeaderValue(){
+            return [{
+                label: "IsLeader",
+                checked: self.currentItem.IsLeader
+              }];
         }
 
         function registerEvents() {
@@ -35,6 +51,8 @@
         }
 
         function save() {
+            self.currentItem.IsLeader = self.IsLeader[0].checked;
+            self.currentItem.IsActive = self.IsActive[0].checked;
             dataService.update(self.currentItem).then(onSaveSuccess, backendService.backendError);
         }
 

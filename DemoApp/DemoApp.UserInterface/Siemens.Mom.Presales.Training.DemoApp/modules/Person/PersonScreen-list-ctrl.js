@@ -40,12 +40,13 @@
 
         function initGridOptions() {
             self.viewerOptions = {
-                containerID: 'itemlist',
+                userPrefId:"PersonitemlistID",
+                containerID: 'PersonitemlistID',
                 selectionMode: 'single',
                 viewOptions: 'gl',
 
                 // TODO: Put here the properties of the entity managed by the service
-                quickSearchOptions: { enabled: true, field: 'Id' },
+                quickSearchOptions: { enabled: true, field: 'FistName' },
                 sortInfo: {
                     field: 'Id',
                     direction: 'asc'

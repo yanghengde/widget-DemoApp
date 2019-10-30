@@ -40,24 +40,29 @@
 
         function initGridOptions() {
             self.viewerOptions = {
-                containerID: 'itemlist',
+                userPrefId: "TeamitemlistID",
+                containerID: 'TeamitemlistID',
                 selectionMode: 'single',
                 viewOptions: 'gl',
 
                 // TODO: Put here the properties of the entity managed by the service
-                quickSearchOptions: { enabled: true, field: 'Id' },
+                quickSearchOptions: { enabled: true, field: 'Name' },
+                filterBarOptions:"sqfg",
+                filterFields:[{field:'Name',displayName:'Name',type:'string'}
+                ,{field:'Description',displayName:'Description',type:'string'}
+                ,{field:'IsLeader',displayName:'IsLeader',type:'boolean'}],
                 sortInfo: {
-                    field: 'Id',
+                    field: 'Name',
                     direction: 'asc'
                 },
                 image: 'fa-cube',
                 tileConfig: {
-                    titleField: 'Id'
+                    titleField: 'Name'
                 },
                 gridConfig: {
                     // TODO: Put here the properties of the entity managed by the service
                     columnDefs: [
-                      { field: 'Id', displayName: 'Id' }
+                        { field: 'Name', displayName: 'Name' }, { field: 'Description', displayName: 'Description' }, { field: 'IsLeader', displayName: 'IsLeader' },{ field: 'IsActive', displayName: 'IsActive' }
                     ]
                 },
                 onSelectionChangeCallback: onGridItemSelectionChanged

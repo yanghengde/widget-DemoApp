@@ -13,7 +13,7 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FunctionalBlockType>Project</FunctionalBlockType>
-    <FunctionalBlockVersion>01.00.00</FunctionalBlockVersion>
+    <FunctionalBlockVersion>01.01.01</FunctionalBlockVersion>
     <FunctionalBlockName>DemoApp</FunctionalBlockName>
     <FunctionalBlockPrefix>Siemens.Mom.Presales.Training</FunctionalBlockPrefix>
     <SitPlatformVersion>3.0</SitPlatformVersion>
@@ -37,16 +37,20 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Siemens.Mom.Presales.Training.MasterData.DemoLib.MSModel.Commands">
-      <HintPath>..\..\SimaticITPackages\Siemens.Mom.Presales.Training.DemoLib_01.00.00\model\bin\Siemens.Mom.Presales.Training.MasterData.DemoLib.MSModel.Commands.dll</HintPath>
+      <HintPath>..\..\SimaticITPackages\Siemens.Mom.Presales.Training.DemoLib_01.01.00\model\bin\Siemens.Mom.Presales.Training.MasterData.DemoLib.MSModel.Commands.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Siemens.Mom.Presales.Training.MasterData.DemoLib.MSModel.Types">
-      <HintPath>..\..\SimaticITPackages\Siemens.Mom.Presales.Training.DemoLib_01.00.00\model\bin\Siemens.Mom.Presales.Training.MasterData.DemoLib.MSModel.Types.dll</HintPath>
+      <HintPath>..\..\SimaticITPackages\Siemens.Mom.Presales.Training.DemoLib_01.01.00\model\bin\Siemens.Mom.Presales.Training.MasterData.DemoLib.MSModel.Types.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Siemens.Mom.Presales.Training.MasterData.DemoLib.MSModel.Types.ProjectionModel">
-      <HintPath>..\..\SimaticITPackages\Siemens.Mom.Presales.Training.DemoLib_01.00.00\model\bin\Siemens.Mom.Presales.Training.MasterData.DemoLib.MSModel.Types.ProjectionModel.dll</HintPath>
+      <HintPath>..\..\SimaticITPackages\Siemens.Mom.Presales.Training.DemoLib_01.01.00\model\bin\Siemens.Mom.Presales.Training.MasterData.DemoLib.MSModel.Types.ProjectionModel.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Siemens.Mom.Presales.Training.MasterData.DemoLib.MSModel.Types.ReadingModel">
-      <HintPath>..\..\SimaticITPackages\Siemens.Mom.Presales.Training.DemoLib_01.00.00\model\bin\Siemens.Mom.Presales.Training.MasterData.DemoLib.MSModel.Types.ReadingModel.dll</HintPath>
+      <HintPath>..\..\SimaticITPackages\Siemens.Mom.Presales.Training.DemoLib_01.01.00\model\bin\Siemens.Mom.Presales.Training.MasterData.DemoLib.MSModel.Types.ReadingModel.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
