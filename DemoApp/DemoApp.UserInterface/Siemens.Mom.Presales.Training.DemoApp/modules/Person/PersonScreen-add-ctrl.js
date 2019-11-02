@@ -27,6 +27,17 @@
             //Expose Model Methods
             self.save = save;
             self.cancel = cancel;
+
+            self.sexOptions = [{label:'Man', value:0},{label:'Woman',value:1},{label:'Man/Woman',value:2}]
+            self.IsActive=[{label:"Active", checked: false}]
+            self.ChangeBirthday = changebirthday;
+        }
+
+        function changebirthday(oldValue,newValue){
+            var curDate = new Date();
+            var selectedDate = new Date(newValue);
+            var newdate = curDate.getTime() - selectedDate.getTime();
+            self.ChangeAge = Math.ceil(newdate/1000/60/60/24/365);
         }
 
         function registerEvents() {
@@ -34,6 +45,8 @@
         }
 
         function save() {
+            self.currentItem.IsActive = self.IsActive[0].checked;
+            self.currentItem.Age = self.ChangeAge;
             dataService.create(self.currentItem).then(onSaveSuccess, backendService.backendError);
         }
 

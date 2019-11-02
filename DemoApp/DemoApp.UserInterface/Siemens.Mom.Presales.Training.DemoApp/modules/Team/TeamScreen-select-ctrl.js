@@ -11,7 +11,7 @@
         function activate() {
             init();
 
-            sidePanelManager.setTitle('Select');
+            //sidePanelManager.setTitle('Select');
             sidePanelManager.open('e');
         }
 
@@ -63,7 +63,7 @@
                 }
             },
             data: {
-                title: 'Select'
+                title: ''
             },
             params: {
                 selectedItem: null,

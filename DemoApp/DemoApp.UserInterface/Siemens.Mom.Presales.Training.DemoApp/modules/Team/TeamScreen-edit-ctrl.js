@@ -2,8 +2,8 @@
     'use strict';
     angular.module('Siemens.Mom.Presales.Training.DemoApp.Team').config(EditScreenStateConfig);
 
-    EditScreenController.$inject = ['Siemens.Mom.Presales.Training.DemoApp.Team.TeamScreen.service', '$state', '$stateParams', 'common.base', '$filter', '$scope'];
-    function EditScreenController(dataService, $state, $stateParams, common, $filter, $scope) {
+    EditScreenController.$inject = ['Siemens.Mom.Presales.Training.DemoApp.Team.TeamScreen.service', '$state', '$stateParams', 'common.base', '$filter', '$scope','$translate'];
+    function EditScreenController(dataService, $state, $stateParams, common, $filter, $scope, $translate) {
         var self = this;
         var sidePanelManager, backendService, propertyGridHandler;
 
@@ -12,7 +12,7 @@
             init();
             registerEvents();
 
-            sidePanelManager.setTitle('Edit');
+            sidePanelManager.setTitle($translate.instant('Siemens.Mom.Presales.Training.DemoApp.Edit'));
             sidePanelManager.open('e');
         }
 
@@ -34,14 +34,14 @@
 
         function getIsActiveValue(){
             return [{
-                label: "IsActive",
+                label: $translate.instant('Siemens.Mom.Presales.Training.DemoApp.IsActive') ,
                 checked: self.currentItem.IsActive
               }];
         }
 
         function getIsLeaderValue(){
             return [{
-                label: "IsLeader",
+                label: $translate.instant('Siemens.Mom.Presales.Training.DemoApp.IsLeader') ,
                 checked: self.currentItem.IsLeader
               }];
         }
@@ -87,7 +87,7 @@
                 }
             },
             data: {
-                title: 'Edit'
+                title: 'Siemens.Mom.Presales.Training.DemoApp.Edit'
             },
             params: {
                 selectedItem: null,

@@ -1,13 +1,68 @@
-﻿<div class="command-bar-side-panel">
-    <button ng-click="vm.cancel()" class="btn side-panel-button">Close</button>
-</div>
-<div class="side-panel-property-area-body">
-    <sit-property-grid sit-id="view_form"
-                       sit-layout="Vertical"
-                       sit-type="Fluid"
-                       sit-mode="view"
-                       sit-columns="1">
-        <!-- TODO: Put here the properties of the entity managed by the service -->
-        <sit-property sit-widget="sit-label" sit-value="vm.currentItem.Id">ID:</sit-property>
-    </sit-property-grid>
+﻿<div style="width:100%; height:calc(100% - 12px);">
+    <h2 class="title" style="display: inline; vertical-align: middle;">{{ 'SIT.Automation.engineering.automation_node_type' | translate }}</h2>
+    <div class="automation-vertical-cmdbar">
+        <sit-command-bar sit-type="action" sit-label-align="right" sit-layout="vertical">
+            <sit-command-group sit-label=""
+                               sit-name="com.siemens.customcommand.approve"
+                               cmd-icon="Checkmark"
+                               sit-tooltip="{{ 'SIT.Automation.common.approve' | translate }}"
+                               ng-show="vm.isSelectedAutomationNodeType && vm.isActiveOverviewTab  && vm.isViewCurrent && vm.selectedAutomationNodeType.UIStatus.IsCMDApproveVisible && !vm.selectedAutomationNodeType.IsLocked"
+                               sit-type="group">
+                <sit-command ng-click="vm.approveButtonHandler"
+                             sit-label="{{ 'SIT.Automation.common.type' | translate }}"
+                             sit-name="com.siemens.customcommand.approveTypes"
+                             sit-tooltip="{{ 'SIT.Automation.common.type' | translate }}"
+                             sit-type="cmdGroup"
+                             ng-show="vm.isSelectedAutomationNodeType && vm.isActiveOverviewTab && vm.isViewCurrent && vm.selectedAutomationNodeType.UIStatus.IsCMDApproveVisible"
+                             sit-icon=" "></sit-command>
+                <sit-command ng-click="vm.approveTypesAndInstancesButtonHandler"
+                             sit-label="{{ 'SIT.Automation.common.typeAndInstances' | translate }}"
+                             sit-name="com.siemens.customcommand.approveTypesAndInstances"
+                             sit-tooltip="{{ 'SIT.Automation.common.typeAndInstances' | translate }}"
+                             sit-type="cmdGroup"
+                             ng-show="vm.isSelectedAutomationNodeType && vm.isActiveOverviewTab && vm.isViewCurrent && vm.selectedAutomationNodeType.UIStatus.IsCMDApproveVisible"
+                             sit-icon=" "></sit-command>
+            </sit-command-group>  
+            <sit-command cmd-icon="Edit"
+                         sit-name="com.siemens.customcommand.editParameter"
+                         sit-tooltip="{{ 'SIT.Automation.common.edit' | translate }}"
+                         ng-click="vm.editParameterButtonHandler"
+                         sit-label="{{ 'SIT.Automation.common.edit' | translate }}"
+                         ng-show="vm.isSelectedAutomationNodeTypeParameter && vm.isActiveParameterTab  && vm.isViewCurrent && vm.selectedAutomationNodeType.UIStatus.IsCMDUpdateDeleteVisible  && !vm.selectedAutomationNodeType.IsLocked"></sit-command>
+        </sit-command-bar>
+    </div>
+    <div ui-view="content" id="automationNode" class="automation-details-with-commandbar content-area content-area-relative" style="height: calc(100% - 130px) !important">
+        <div style="display:inline-block;vertical-align:top">
+            <sit-item-collection-viewer sit-data="vm.automationNodeTypeData" sit-options="vm.automationNodeTypeOptions"></sit-item-collection-viewer>
+        </div>
+        <div style="display:inline-block;vertical-align:top;width:calc(100% - 300px)">
+            <tabset id="tabs">
+                <tab index="0" heading="{{ 'SIT.Automation.engineering.overview' | translate}}" active="vm.activeOverviewTab" warning="false" select="vm.setActiveOverviewTab()">
+                    <sit-property-grid sit-layout="Vertical"
+                                       sit-type="Fluid"
+                                       sit-mode="list"
+                                       sit-columns="1">
+                        <sit-property sit-widget="sit-textarea"
+                                      sit-value="vm.selectedAutomationNodeType.NId"
+                                      sit-validation="{ required: true }"
+                                      sit-read-only="true">{{ 'SIT.Automation.common.id' | translate }}:</sit-property>
+                        <sit-property sit-widget="sit-textarea"
+                                      sit-value="vm.selectedAutomationNodeType.Name"
+                                      sit-validation="{ required: false }"
+                                      sit-read-only="true">{{ 'SIT.Automation.common.name' | translate }}:</sit-property>
+                        <sit-property sit-widget="sit-textarea"
+                                      sit-value="vm.selectedAutomationNodeType.Description"
+                                      sit-validation="{ required: false }"
+                                      sit-read-only="true">{{ 'SIT.Automation.common.description' | translate }}:</sit-property>
+                        <sit-property sit-widget="sit-text"
+                                      sit-value="vm.selectedAutomationNodeType.UIStatus.NId"
+                                      sit-read-only="true">{{ 'SIT.Automation.common.status' | translate }}:</sit-property>
+                    </sit-property-grid>
+                </tab>
+                <tab index="1" heading="{{ 'SIT.Automation.engineering.parameters' | translate}}" active="" warning="false" select="vm.setActiveParameterTab()">
+                    <sit-item-collection-viewer sit-data="vm.automationNodeTypeParameterData" sit-options="vm.automationNodeTypeParameterOptions"></sit-item-collection-viewer>
+                </tab>
+            </tabset>
+        </div>
+    </div>
 </div>

@@ -2,8 +2,8 @@
     'use strict';
     angular.module('Siemens.Mom.Presales.Training.DemoApp.Team').config(AddScreenStateConfig);
 
-    AddScreenController.$inject = ['Siemens.Mom.Presales.Training.DemoApp.Team.TeamScreen.service', '$state', '$stateParams', 'common.base', '$filter', '$scope'];
-    function AddScreenController(dataService, $state, $stateParams, common, $filter, $scope) {
+    AddScreenController.$inject = ['Siemens.Mom.Presales.Training.DemoApp.Team.TeamScreen.service', '$state', '$stateParams', 'common.base', '$filter', '$scope','$translate'];
+    function AddScreenController(dataService, $state, $stateParams, common, $filter, $scope,$translate) {
         var self = this;
         var sidePanelManager, backendService, propertyGridHandler;
         

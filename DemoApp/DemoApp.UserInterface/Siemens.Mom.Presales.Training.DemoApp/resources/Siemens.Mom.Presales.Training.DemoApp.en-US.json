@@ -1,0 +1,13 @@
+{
+    "Siemens.Mom.Presales.Training.DemoApp":{
+        "Name":"Name",
+        "Description":"Description",
+        "Number":"Number",
+        "IsLeader":"TeamLeader",
+        "IsActive":"Active",
+        "Edit":"Edit Page",
+        "Team":"Team Page",
+        "Save":"Confirm",
+        "Cancel":"Cancel"
+    }
+}

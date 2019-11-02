@@ -10,8 +10,31 @@
                        sit-columns="1">
         <!-- TODO: Put here the properties of the entity managed by the service -->
         <sit-property sit-widget="sit-text"
-                      sit-value="vm.currentItem.Id"
-                      sit-validation="{required: true}"
-                      sit-read-only="false">ID:</sit-property>
-    </sit-property-grid>
+                sit-value="vm.currentItem.FirstName"
+                sit-validation="{required: true}"
+                sit-read-only="false">FirstName:</sit-property>
+        <sit-property sit-widget="sit-text"
+                sit-value="vm.currentItem.LastName"
+                sit-validation="{required: true}"
+                sit-read-only="false">LastName:</sit-property>
+        <sit-property sit-widget="sit-radio"
+                sit-options="vm.sexOptions"
+                sit-value="vm.currentItem.Sex"
+                sit-validation="{required: true}"
+                sit-read-only="false">Sex:</sit-property>
+        <sit-property sit-widget="sit-datepicker"
+                sit-value="vm.currentItem.Birthday"
+                sit-validation="{required: true}"
+                sit-change="vm.ChangeBirthday"
+                sit-format="'yyyy-MM-dd'"
+                sit-read-only="false">Birthday:</sit-property>
+        <sit-property sit-widget="sit-numeric"
+                sit-value="vm.currentItem.Age"
+                sit-validation="{required: true,max:120,min:18}"
+                sit-read-only="true">Age:</sit-property>
+        <sit-property sit-widget="sit-checkbox"
+                sit-value="vm.IsActive"
+                sit-validation="{required: false}"
+                sit-read-only="false">{{ 'Siemens.Mom.Presales.Training.DemoApp.IsActive' | translate }}:</sit-property>
+        </sit-property-grid>
 </div>

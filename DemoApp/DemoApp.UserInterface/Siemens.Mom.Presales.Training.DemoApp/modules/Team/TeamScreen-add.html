@@ -1,6 +1,6 @@
 ﻿<div class="command-bar-side-panel">
-    <button ng-click="vm.cancel()" class="btn side-panel-button">Cancel</button>
-    <button ng-click="vm.save()" class="btn side-panel-button" ng-show="vm.validInputs">Save</button>
+    <button ng-click="vm.cancel()" class="btn side-panel-button">{{'Siemens.Mom.Presales.Training.DemoApp.Cancel' | translate}}</button>
+    <button ng-click="vm.save()" class="btn side-panel-button" ng-show="vm.validInputs">{{'Siemens.Mom.Presales.Training.DemoApp.Save' | translate}}</button>
 </div>
 <div class="side-panel-property-area-body">
     <sit-property-grid sit-id="add_form"
@@ -12,22 +12,22 @@
         <sit-property sit-widget="sit-text"
                       sit-value="vm.currentItem.Name"
                       sit-validation="{required: true}"
-                      sit-read-only="false">Name:</sit-property>
+                      sit-read-only="false">{{ 'Siemens.Mom.Presales.Training.DemoApp.Name' | translate }}:</sit-property>
          <sit-property sit-widget="sit-text"
                       sit-value="vm.currentItem.Description"
                       sit-validation="{required: true}"
-                      sit-read-only="false">Description:</sit-property>
+                      sit-read-only="false">{{ 'Siemens.Mom.Presales.Training.DemoApp.Description' | translate }}:</sit-property>
          <sit-property sit-widget="sit-numeric"
                       sit-value="vm.currentItem.Number"
-                      sit-validation="{required: true}"
-                      sit-read-only="false">Number:</sit-property>
+                      sit-validation="{required: true,max:100,min:1}"
+                      sit-read-only="false">{{ 'Siemens.Mom.Presales.Training.DemoApp.Number' | translate }}:</sit-property>
           <sit-property sit-widget="sit-checkbox"
                       sit-value="vm.IsLeader"
                       sit-validation="{required: false}"
-                      sit-read-only="false">IsLeader:</sit-property>
+                      sit-read-only="false">{{ 'Siemens.Mom.Presales.Training.DemoApp.IsLeader' | translate }}:</sit-property>
            <sit-property sit-widget="sit-checkbox"
                       sit-value="vm.IsActive"
                       sit-validation="{required: false}"
-                      sit-read-only="false">IsActive:</sit-property>
+                      sit-read-only="false">{{ 'Siemens.Mom.Presales.Training.DemoApp.IsActive' | translate }}:</sit-property>
     </sit-property-grid>
 </div>

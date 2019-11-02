@@ -18,6 +18,12 @@
                      ng-click="vm.deleteButtonHandler"
                      sit-label="Delete"
                      ng-show="vm.isButtonVisible"></sit-command>
+         <sit-command svg-icon="common/icons/cmdAssignGroupToRole24.svg"
+                    sit-name="com.siemens.customcommand.addPerson"
+                    ng-click="vm.addPersonButtonHandler"
+                    sit-tooltip="addPerson"
+                    sit-label="AddPerson"
+                    ng-show="vm.isButtonVisible"></sit-command>
         <sit-command svg-icon="common/icons/cmdAdd24.svg"
                      sit-name="com.siemens.customcommand.add"
                      ng-click="vm.addButtonHandler"
@@ -28,4 +34,47 @@
     <div id="itemlist" style="width:calc(100% - 56px); height: calc(100% - 16px); padding:16px 16px 0 16px">
         <sit-item-collection-viewer sit-data="vm.viewerData" sit-options="vm.viewerOptions"></sit-item-collection-viewer>
     </div>
+</div>
+<div class="modal fade" id="myModalRevoke" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="myModalLabel">测试</h2>
+            </div>
+            <div class="modal-body">
+                <sit-property-grid sit-id="edit_form"
+                       sit-layout="Vertical"
+                       sit-type="Fluid"
+                       sit-mode="edit"
+                       sit-columns="1">
+                <!-- TODO: Put here the properties of the entity managed by the service -->
+                <sit-property sit-widget="sit-text"
+                            sit-value="vm.currentItem.Name"
+                            sit-validation="{required: true}"
+                            sit-read-only="false">Name:</sit-property>
+                <sit-property sit-widget="sit-text"
+                            sit-value="vm.currentItem.Description"
+                            sit-validation="{required: true}"
+                            sit-read-only="false">Description:</sit-property>
+                <sit-property sit-widget="sit-numeric"
+                            sit-value="vm.currentItem.Number"
+                            sit-validation="{required: true}"
+                            sit-read-only="false">Number:</sit-property>
+                <sit-property sit-widget="sit-checkbox"
+                            sit-value="vm.IsLeader"
+                            sit-validation="{required: false}"
+                            sit-read-only="false">IsLeader:</sit-property>
+                <sit-property sit-widget="sit-checkbox"
+                            sit-value="vm.IsActive"
+                            sit-validation="{required: false}"
+                            sit-read-only="false">IsActive:</sit-property>
+            </sit-property-grid>
+                    </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" ng-click="vm.save()">Confirm</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
 </div>

@@ -2,8 +2,8 @@
     'use strict';
     angular.module('Siemens.Mom.Presales.Training.DemoApp.Team').config(ListScreenRouteConfig);
 
-    ListScreenController.$inject = ['Siemens.Mom.Presales.Training.DemoApp.Team.TeamScreen.service', '$state', '$stateParams', '$rootScope', '$scope', 'common.base', 'common.services.logger.service'];
-    function ListScreenController(dataService, $state, $stateParams, $rootScope, $scope, base, loggerService) {
+    ListScreenController.$inject = ['Siemens.Mom.Presales.Training.DemoApp.Team.TeamScreen.service', '$state', '$stateParams', '$rootScope', '$scope', 'common.base', 'common.services.logger.service','$translate'];
+    function ListScreenController(dataService, $state, $stateParams, $rootScope, $scope, base, loggerService,$translate) {
         var self = this;
         var logger, rootstate, messageservice, backendService;
 
@@ -36,6 +36,7 @@
             self.editButtonHandler = editButtonHandler;
             self.selectButtonHandler = selectButtonHandler;
             self.deleteButtonHandler = deleteButtonHandler;
+            self.addPersonButtonHandler = addPersonButtonHandler;
         }
 
         function initGridOptions() {
@@ -49,7 +50,7 @@
                 quickSearchOptions: { enabled: true, field: 'Name' },
                 filterBarOptions:"sqfg",
                 filterFields:[{field:'Name',displayName:'Name',type:'string'}
-                ,{field:'Description',displayName:'Description',type:'string'}
+                ,{field:'Description',displayName:'Description',type:'string'},{field:'Number',displayName:'Number',type:'number'}
                 ,{field:'IsLeader',displayName:'IsLeader',type:'boolean'}],
                 sortInfo: {
                     field: 'Name',
@@ -57,15 +58,26 @@
                 },
                 image: 'fa-cube',
                 tileConfig: {
-                    titleField: 'Name'
+                    titleField: 'Name',
+                    descriptionField: 'Description',
+                    propertyFields: [
+                      { field: 'Number', displayName: 'Number' },
+                      { field: 'IsLeader',displayName: 'IsLeader'}]
                 },
                 gridConfig: {
                     // TODO: Put here the properties of the entity managed by the service
                     columnDefs: [
-                        { field: 'Name', displayName: 'Name' }, { field: 'Description', displayName: 'Description' }, { field: 'IsLeader', displayName: 'IsLeader' },{ field: 'IsActive', displayName: 'IsActive' }
+                        { field: 'Name', displayName: $translate.instant('Siemens.Mom.Presales.Training.DemoApp.Name') }, { field: 'Description', displayName: $translate.instant('Siemens.Mom.Presales.Training.DemoApp.Description') },{ field: 'Number', displayName: $translate.instant('Siemens.Mom.Presales.Training.DemoApp.Number')}, { field: 'IsLeader', displayName: $translate.instant('Siemens.Mom.Presales.Training.DemoApp.IsLeader')},{ field: 'IsActive', displayName: $translate.instant('Siemens.Mom.Presales.Training.DemoApp.IsActive') }
                     ]
                 },
-                onSelectionChangeCallback: onGridItemSelectionChanged
+                onSelectionChangeCallback: onGridItemSelectionChanged,
+                alwaysShowPager: false,
+                enablePaging:true,
+                pagingOptions: {
+                    pageSizes: [5, 10, 25, 50, 100],
+                    pageSize: 10,
+                    currentPage: 1
+                }
             }
         }
 
@@ -83,6 +95,11 @@
             $state.go(rootstate + '.add');
         }
 
+        function addPersonButtonHandler(clickedCommand) {
+            $('#myModalRevoke').modal('show',{ id: self.selectedItem.Id, selectedItem: self.selectedItem });
+            return;
+        }
+
         function editButtonHandler(clickedCommand) {
             // TODO: Put here the properties of the entity managed by the service
             $state.go(rootstate + '.edit', { id: self.selectedItem.Id, selectedItem: self.selectedItem });
@@ -96,7 +113,7 @@
         function deleteButtonHandler(clickedCommand) {
             var title = "Delete";
             // TODO: Put here the properties of the entity managed by the service
-            var text = "Do you want to delete '" + self.selectedItem.Id + "'?";
+            var text = "Do you want to delete '" + self.selectedItem.Name + "'?";
 
             backendService.confirm(text, function () {
                 dataService.delete(self.selectedItem).then(function () {
@@ -138,7 +155,11 @@
                 }
             },
             data: {
-                title: 'TeamScreen'
+                title: 'Siemens.Mom.Presales.Training.DemoApp.Team',
+                displayBreadcrumb: false
+            },
+            params: {
+                newItem: null
             }
         };
         $stateProvider.state(state);

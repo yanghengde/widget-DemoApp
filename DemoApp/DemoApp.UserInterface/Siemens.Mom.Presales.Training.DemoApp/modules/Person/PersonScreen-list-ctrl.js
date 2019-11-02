@@ -46,22 +46,44 @@
                 viewOptions: 'gl',
 
                 // TODO: Put here the properties of the entity managed by the service
-                quickSearchOptions: { enabled: true, field: 'FistName' },
+                quickSearchOptions: { enabled: true, field: 'FirstName' },
+                filterBarOptions:"sqfg",
+                filterFields:[
+                    {field:'FirstName',displayName:'FirstName',type:'string'},
+                    {field:'LastName',displayName:'LastName',type:'string'},
+                    {field:'Birthday',displayName:'Birthday',type:'date'},
+                    {field:'Age',displayName:'Age',type:'number'}],
                 sortInfo: {
-                    field: 'Id',
+                    field: 'First',
                     direction: 'asc'
                 },
-                image: 'fa-cube',
+                image: 'fa-car',//image: 'fa-cube',
                 tileConfig: {
-                    titleField: 'Id'
+                    titleField:'FirstName',
+                    descriptionField: 'LastName',
+                    propertyFields: [
+                      { field: 'LastName', displayName: 'LastName' },
+                      { field: 'Birthday',displayName: 'Birthday'}]
                 },
                 gridConfig: {
                     // TODO: Put here the properties of the entity managed by the service
                     columnDefs: [
-                      { field: 'Id', displayName: 'Id' }
+                        {field: 'FirstName', displayName: 'FirstName'},
+                        {field: 'LastName', displayName: 'LastName'},
+                        {field: 'Sex', displayName: 'Sex',cellTemplate: '<div class="ngCellText" ng-class="col.colIndex()"><span>{{row.entity.Sex === 0 ? "男" : row.entity.Sex === 1 ? "女" : "其它"}} <\span></div>'},
+                        {field: 'Age', displayName: 'Age'},
+                        {field: 'Birthday', displayName: 'Birthday',cellFilter: 'date:\'yyyy-MM-dd\'', resizable: true,sortable: true,width : 100},
+                        {field: 'IsActive', displayName: 'IsActive'}
                     ]
                 },
-                onSelectionChangeCallback: onGridItemSelectionChanged
+                onSelectionChangeCallback: onGridItemSelectionChanged, 
+                alwaysShowPager: false,
+                enablePaging: true,
+                pagingOptions: {
+                    pageSizes: [5, 10, 25, 50, 100],
+                    pageSize: 10,
+                    currentPage: 1
+                }
             }
         }
 
