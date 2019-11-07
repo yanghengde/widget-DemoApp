@@ -3,6 +3,39 @@
   <ProjectSuo>
     <DiagramName>Siemens_Mom_Presales_Training_DA_DemoApp.dm</DiagramName>
     <FileName>DemoApp.DAPOMModel</FileName>
-    <Artifacts />
+    <Artifacts>
+      <ArtifactSuo>
+        <X>5</X>
+        <Y>5</Y>
+        <FullName>Siemens.SimaticIT.SystemData.Foundation.Events.TimerEvent</FullName>
+        <IsExpandedA>true</IsExpandedA>
+        <IsExpandedB>true</IsExpandedB>
+        <IsExpandedC>false</IsExpandedC>
+      </ArtifactSuo>
+      <ArtifactSuo>
+        <X>264</X>
+        <Y>132</Y>
+        <FullName>Siemens.Mom.Presales.Training.DemoApp.DemoApp.DAPOMModel.ReadingFunctions.GetPersons</FullName>
+        <IsExpandedA>true</IsExpandedA>
+        <IsExpandedB>true</IsExpandedB>
+        <IsExpandedC>false</IsExpandedC>
+      </ArtifactSuo>
+      <ArtifactSuo>
+        <X>502</X>
+        <Y>114</Y>
+        <FullName>Siemens.Mom.Presales.Training.DemoApp.DemoApp.DAPOMModel.Types.PersonType</FullName>
+        <IsExpandedA>true</IsExpandedA>
+        <IsExpandedB>false</IsExpandedB>
+        <IsExpandedC>false</IsExpandedC>
+      </ArtifactSuo>
+      <ArtifactSuo>
+        <X>182</X>
+        <Y>153</Y>
+        <FullName>Siemens.Mom.Presales.Training.DemoApp.DemoApp.DAPOMModel.DataModel.Person</FullName>
+        <IsExpandedA>true</IsExpandedA>
+        <IsExpandedB>false</IsExpandedB>
+        <IsExpandedC>false</IsExpandedC>
+      </ArtifactSuo>
+    </Artifacts>
   </ProjectSuo>
 </ArrayOfProjectSuo>

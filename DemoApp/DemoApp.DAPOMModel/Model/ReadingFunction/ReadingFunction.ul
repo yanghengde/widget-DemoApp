@@ -1,1 +1,15 @@
 VERSION '01.12'
+
+[@AddedOnMinorVersion=03.01.00]
+[@Guid(d56a6304-2365-43f2-8bc4-b8971663d84c)]
+READING FUNCTION GetPersons
+INPUT
+    [Length = 255]
+    [@AddedOnMinorVersion=03.01.00]
+    FirstName AS string
+OUTPUT
+    [Optional]
+    [@AddedOnMinorVersion=03.01.00]
+    [@GuidRef(d0dd6957-2522-4247-a788-fc2fbe4cb235, 0004c746-2cd7-47ad-9eaa-b18e697f5012)]
+    Data AS Siemens.Mom.Presales.Training.DemoApp.DemoApp.DAPOMModel.Types.PersonType
+

@@ -34,6 +34,7 @@
         }
 
         function exposeApi() {
+            self.findAll = findAll;
             self.getAll = getAll;
             self.create = createEntity;
             self.update = updateEntity;
@@ -41,6 +42,10 @@
         }
 
         function getAll(options) {
+            return execGetAll(options);
+        }
+
+        function findAll(options) {
             return execGetAll(options);
         }
 

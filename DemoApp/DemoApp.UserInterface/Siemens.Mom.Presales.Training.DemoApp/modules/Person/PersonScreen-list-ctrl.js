@@ -15,7 +15,7 @@
 
             init();
             initGridOptions();
-            initGridData();
+            //initGridData();
         }
 
         function init() {
@@ -30,6 +30,7 @@
             self.isButtonVisible = false;
             self.viewerOptions = {};
             self.viewerData = [];
+            self.filter='';
 
             //Expose Model Methods
             self.addButtonHandler = addButtonHandler;
@@ -42,7 +43,7 @@
             self.viewerOptions = {
                 userPrefId:"PersonitemlistID",
                 containerID: 'PersonitemlistID',
-                selectionMode: 'single',
+                selectionMode: 'multi',
                 viewOptions: 'gl',
 
                 // TODO: Put here the properties of the entity managed by the service
@@ -54,7 +55,7 @@
                     {field:'Birthday',displayName:'Birthday',type:'date'},
                     {field:'Age',displayName:'Age',type:'number'}],
                 sortInfo: {
-                    field: 'First',
+                    field: 'FirstName',
                     direction: 'asc'
                 },
                 image: 'fa-car',//image: 'fa-cube',
@@ -67,6 +68,8 @@
                 },
                 gridConfig: {
                     // TODO: Put here the properties of the entity managed by the service
+                    showSelectionCheckbox: true,
+                    groupsCollapsedByDefault: false,
                     columnDefs: [
                         {field: 'FirstName', displayName: 'FirstName'},
                         {field: 'LastName', displayName: 'LastName'},
@@ -77,24 +80,37 @@
                     ]
                 },
                 onSelectionChangeCallback: onGridItemSelectionChanged, 
-                alwaysShowPager: false,
+                onPageChangedCallback: onPageChangedCallback,
                 enablePaging: true,
                 pagingOptions: {
                     pageSizes: [5, 10, 25, 50, 100],
                     pageSize: 10,
                     currentPage: 1
+                },
+                enableResponsiveBehaviour: true,
+                serverDataOptions: {
+                    dataService: getDataService(),
+                    appName: 'DemoApp',
+                    dataEntity: 'Person',
+                    optionsString: ''
                 }
             }
         }
 
-        function initGridData() {
-            dataService.getAll().then(function (data) {
-                if ((data) && (data.succeeded)) {
-                    self.viewerData = data.value;
-                } else {
-                    self.viewerData = [];
-                }
-            }, backendService.backendError);
+        function onPageChangedCallback(pageNumber) {
+            self.viewerOptions.pagingOptions.currentPage = pageNumber;
+            if (self.onPageChanged) self.onPageChanged({ pageNumber: pageNumber });
+        }
+
+        function getDataService() {
+            return {
+                findAll: findAll
+            };
+
+            function findAll(opt) {
+                var options = opt.options;
+                return dataService.findAll(options);
+            }
         }
 
         function addButtonHandler(clickedCommand) {

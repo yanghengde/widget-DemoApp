@@ -14,7 +14,7 @@
     <FileAlignment>512</FileAlignment>
     <FunctionalBlockPrefix>Siemens.Mom.Presales.Training</FunctionalBlockPrefix>
     <FunctionalBlockType>Project</FunctionalBlockType>
-    <FunctionalBlockVersion>02.00.01</FunctionalBlockVersion>
+    <FunctionalBlockVersion>03.01.00</FunctionalBlockVersion>
     <FunctionalBlockName>DemoApp</FunctionalBlockName>
     <SitPlatformVersion>3.0</SitPlatformVersion>
   </PropertyGroup>
@@ -39,16 +39,31 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Siemens.Mom.Presales.Training.DemoApp.DemoApp.DAPOMModel.PublicModel">
+      <HintPath>..\DemoApp.DAPOMModel\bin\Siemens.Mom.Presales.Training.DemoApp.DemoApp.DAPOMModel.PublicModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Siemens.Mom.Presales.Training.DemoApp.DemoApp.DAPOMModel.ReadingFunctions">
+      <HintPath>..\DemoApp.DAPOMModel\bin\Siemens.Mom.Presales.Training.DemoApp.DemoApp.DAPOMModel.ReadingFunctions.dll</HintPath>
+    </Reference>
+    <Reference Include="Siemens.Mom.Presales.Training.DemoApp.DemoApp.DAPOMModel.Types">
+      <HintPath>..\DemoApp.DAPOMModel\bin\Siemens.Mom.Presales.Training.DemoApp.DemoApp.DAPOMModel.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Siemens.Mom.Presales.Training.DemoApp.DemoApp.DAPOMModel.Types.ProjectionModel">
+      <HintPath>..\DemoApp.DAPOMModel\bin\Siemens.Mom.Presales.Training.DemoApp.DemoApp.DAPOMModel.Types.ProjectionModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Siemens.Mom.Presales.Training.DemoApp.DemoApp.DAPOMModel.Types.ReadingModel">
+      <HintPath>..\DemoApp.DAPOMModel\bin\Siemens.Mom.Presales.Training.DemoApp.DemoApp.DAPOMModel.Types.ReadingModel.dll</HintPath>
+    </Reference>
     <Reference Include="Siemens.Mom.Presales.Training.MasterData.DemoLib.MSModel.Types">
-      <HintPath>..\..\SimaticITPackages\Siemens.Mom.Presales.Training.DemoLib_02.00.01\model\bin\Siemens.Mom.Presales.Training.MasterData.DemoLib.MSModel.Types.dll</HintPath>
+      <HintPath>..\..\SimaticITPackages\Siemens.Mom.Presales.Training.DemoLib_03.00.01\model\bin\Siemens.Mom.Presales.Training.MasterData.DemoLib.MSModel.Types.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Siemens.Mom.Presales.Training.MasterData.DemoLib.MSModel.Types.ProjectionModel">
-      <HintPath>..\..\SimaticITPackages\Siemens.Mom.Presales.Training.DemoLib_02.00.01\model\bin\Siemens.Mom.Presales.Training.MasterData.DemoLib.MSModel.Types.ProjectionModel.dll</HintPath>
+      <HintPath>..\..\SimaticITPackages\Siemens.Mom.Presales.Training.DemoLib_03.00.01\model\bin\Siemens.Mom.Presales.Training.MasterData.DemoLib.MSModel.Types.ProjectionModel.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Siemens.Mom.Presales.Training.MasterData.DemoLib.MSModel.Types.ReadingModel">
-      <HintPath>..\..\SimaticITPackages\Siemens.Mom.Presales.Training.DemoLib_02.00.01\model\bin\Siemens.Mom.Presales.Training.MasterData.DemoLib.MSModel.Types.ReadingModel.dll</HintPath>
+      <HintPath>..\..\SimaticITPackages\Siemens.Mom.Presales.Training.DemoLib_03.00.01\model\bin\Siemens.Mom.Presales.Training.MasterData.DemoLib.MSModel.Types.ReadingModel.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -105,6 +120,8 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Compile Include="DemoApp.DAPOMModel\ReadingFunctions\GetPersonsHandler.cs" />
+    <Compile Include="DemoApp.DAPOMModel\ReadingFunctions\GetPersonsHandlerExecution.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

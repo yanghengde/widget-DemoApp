@@ -9,7 +9,7 @@
     <AssemblyName>Siemens.Mom.Presales.Training.DemoApp.DemoApp.DAPOMModel</AssemblyName>
     <Name>DemoApp.DAPOMModel</Name>
     <FunctionalBlockType>Project</FunctionalBlockType>
-    <FunctionalBlockVersion>02.00.01</FunctionalBlockVersion>
+    <FunctionalBlockVersion>03.01.00</FunctionalBlockVersion>
     <FunctionalBlockName>DemoApp</FunctionalBlockName>
     <FunctionalBlockDomain>DemoApp</FunctionalBlockDomain>
     <FunctionalBlockPrefix>Siemens.Mom.Presales.Training</FunctionalBlockPrefix>
@@ -104,7 +104,7 @@
     <Reference Include="Siemens_Mom_Presales_Training_MS_DemoLib.um">
       <Name>Siemens_Mom_Presales_Training_MS_DemoLib.um</Name>
       <FileModelName>Siemens_Mom_Presales_Training_MS_DemoLib.um</FileModelName>
-      <HintPath>..\..\SimaticITPackages\Siemens.Mom.Presales.Training.DemoLib_02.00.01\model\manufacturingModel\Siemens_Mom_Presales_Training_MS_DemoLib.um</HintPath>
+      <HintPath>..\..\SimaticITPackages\Siemens.Mom.Presales.Training.DemoLib_03.00.01\model\manufacturingModel\Siemens_Mom_Presales_Training_MS_DemoLib.um</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>

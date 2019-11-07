@@ -1,1 +1,27 @@
 VERSION '01.12'
+
+[@AddedOnMinorVersion=03.01.00]
+[@Guid(0004c746-2cd7-47ad-9eaa-b18e697f5012)]
+PARAMETERTYPE PersonType
+WITH
+    [Length = 255]
+    [@AddedOnMinorVersion=03.01.00]
+    [@Guid(5cd0fef8-8000-45a8-9be8-cdcd3a644f94)]
+    FirstName AS string
+    [Length = 255]
+    [@AddedOnMinorVersion=03.01.00]
+    [@Guid(7289a767-51f4-4579-ac75-5b1a74dc91b6)]
+    LastName AS string
+    [@AddedOnMinorVersion=03.01.00]
+    [@Guid(cdf82823-bf88-4d17-835e-6e8d5d9aa229)]
+    Sex AS int
+    [@AddedOnMinorVersion=03.01.00]
+    [@Guid(056446e6-f787-4770-a205-01e835c3dece)]
+    Age AS int
+    [@AddedOnMinorVersion=03.01.00]
+    [@Guid(ec8d54c8-b146-433b-acaa-ba7daaa537c8)]
+    Birthday AS DateTime
+    [@AddedOnMinorVersion=03.01.00]
+    [@Guid(d61967fb-3cde-456c-84b6-d78a3164bb52)]
+    IsActive AS bool
+
