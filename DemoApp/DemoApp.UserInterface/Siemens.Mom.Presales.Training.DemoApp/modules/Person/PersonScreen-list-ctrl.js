@@ -16,6 +16,8 @@
             init();
             initGridOptions();
             //initGridData();
+
+            testReadingFunctionHandler();
         }
 
         function init() {
@@ -31,6 +33,8 @@
             self.viewerOptions = {};
             self.viewerData = [];
             self.filter='';
+            self.selectedRows = [];
+            self.readfunctionValue = [];
 
             //Expose Model Methods
             self.addButtonHandler = addButtonHandler;
@@ -38,6 +42,24 @@
             self.selectButtonHandler = selectButtonHandler;
             self.deleteButtonHandler = deleteButtonHandler;
         }
+
+        //测试ReadingFunction的取值
+        function testReadingFunctionHandler() {			
+            backendService.read(
+            {
+                appName: "DemoApp",
+                functionName: "GetPersons",
+                params: {
+                            FirstName:'hengde'
+                        },
+                options: ""
+            })
+            .then(function (data){
+                backendService.result = data;
+                self.readfunctionValue = data.value;
+            }, backendService.backendError);
+        }
+        
 
         function initGridOptions() {
             self.viewerOptions = {
@@ -140,6 +162,11 @@
         }
 
         function onGridItemSelectionChanged(items, item) {
+            if (self.onRowSelectionChanged) self.onRowSelectionChanged({ rows: items, row: item });
+            self.selectedRows = items;
+
+            console.log(self.readfunctionValue); //测试打印ReadingFunction的值
+            console.log(self.selectedRows);
             if (item && item.selected == true) {
                 self.selectedItem = item;
                 setButtonsVisibility(true);

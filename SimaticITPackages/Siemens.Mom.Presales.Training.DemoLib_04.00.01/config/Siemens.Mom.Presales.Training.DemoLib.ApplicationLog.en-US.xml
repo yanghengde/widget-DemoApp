@@ -10,14 +10,14 @@
     - The <type> attribute represents the datatype of the parameter and its value should be one of the primitive types: string | byte | int | decimal | float | double | long | boolean | Guid | Datetime | Timespan.  -->
 <messages>
   <message>
-    <id></id>
-    <short></short>
-    <long></long>
-    <level></level>
+    <id>12101</id>
+    <short>test by hengde, have a test</short>
+    <long>this is long message, test by long message</long>
+    <level>Informational</level>
     <params>
       <param>
-        <key></key>
-        <type></type>
+        <key>test</key>
+        <type>string</type>
       </param>
     </params>
   </message>

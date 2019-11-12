@@ -1,17 +1,17 @@
 <referenceManager version="2.3">
-  <integrity projectVersion="03.00.01">
+  <integrity projectVersion="04.00.01">
     <reference>
       <name>Siemens.Mom.Presales.Training.DemoLib</name>
-      <version>03.00.01</version>
+      <version>04.00.00</version>
       <type>Library</type>
     </reference>
   </integrity>
-  <functionalblocks projectVersion="03.01.00">
+  <functionalblocks projectVersion="04.00.01">
     <functionalblock>
       <name>Siemens.Mom.Presales.Training.DemoLib</name>
-      <version>03.00.01</version>
+      <version>04.00.01</version>
       <type>Library</type>
     </functionalblock>
   </functionalblocks>
-  <projects projectVersion="03.01.00" />
+  <projects projectVersion="04.00.01" />
 </referenceManager>

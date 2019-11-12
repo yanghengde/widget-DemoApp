@@ -21,7 +21,7 @@
     <IISExpressUseClassicPipelineMode />
     <Name>DemoApp.UserInterface</Name>
     <FunctionalBlockType>Project</FunctionalBlockType>
-    <FunctionalBlockVersion>03.01.00</FunctionalBlockVersion>
+    <FunctionalBlockVersion>04.00.01</FunctionalBlockVersion>
     <FunctionalBlockName>DemoApp</FunctionalBlockName>
     <FunctionalBlockPrefix>Siemens.Mom.Presales.Training</FunctionalBlockPrefix>
     <SitPlatformVersion>3.0</SitPlatformVersion>

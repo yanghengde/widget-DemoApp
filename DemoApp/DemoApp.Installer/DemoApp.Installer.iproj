@@ -10,7 +10,7 @@
     <Name>DemoApp.Installer</Name>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FunctionalBlockType>Project</FunctionalBlockType>
-    <FunctionalBlockVersion>03.01.00</FunctionalBlockVersion>
+    <FunctionalBlockVersion>04.00.01</FunctionalBlockVersion>
     <FunctionalBlockName>DemoApp</FunctionalBlockName>
     <FunctionalBlockPrefix>Siemens.Mom.Presales.Training</FunctionalBlockPrefix>
     <FunctionalBlockModels>Siemens.Mom.Presales.Training.DemoApp.DemoApp.DAPOMModel</FunctionalBlockModels>
