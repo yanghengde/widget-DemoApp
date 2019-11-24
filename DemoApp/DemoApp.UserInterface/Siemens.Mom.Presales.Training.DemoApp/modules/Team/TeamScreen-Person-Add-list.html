@@ -1,0 +1,62 @@
+﻿<sit-side-panel sit-title="{{vm.title}}" sit-actions="vm.actionButtons" sit-close="vm.closeButton">
+    <div class="side-panel-container">
+        <div id="itemlist" class="content-area content-area-relative" style="height: calc(100% - 120px) !important">
+            <table class="table">
+                <tr>
+                    <td style="width: 60%;">
+                        <div style="width:100%;float:left;display:inline;padding-top:4px">
+                            <sit-entity-picker sit-id="vm.entityPickerConfig.id"
+                                               sit-datasource="vm.entityPickerConfig.datasource"
+                                               sit-limit="vm.entityPickerConfig.limit"
+                                               sit-placeholder="vm.entityPickerConfig.placeholder"
+                                               sit-selected-attribute-to-display="vm.entityPickerConfig.attributetodisplay"
+                                               sit-selected-object="vm.entityPickerConfig.selectedObject"
+                                               sit-wait-ms="vm.entityPickerConfig.waitTime"
+                                               sit-editable="vm.entityPickerConfig.editable"
+                                               sit-value="vm.entityPickerConfig.entityValue"
+                                               ng-blur="vm.entityPickerConfig.blurEvent()"
+                                               sit-change="vm.entityPickerConfig.changeEvent"
+                                               ng-disabled="vm.entityPickerConfig.disableEP"
+                                               ng-focus="vm.entityPickerConfig.focusEvent()"
+                                               ng-readonly="vm.entityPickerConfig.readOnly"
+                                               sit-required="vm.entityPickerConfig.required"
+                                               sit-picker-options="vm.entityPickerConfig.icvOptions">
+                            </sit-entity-picker>
+                        </div>
+                        </td>
+                    <td style="width:20%;">
+                        <div style="float:left;display:inline;">
+                            <sit-command-bar sit-type="action">
+                                <sit-command sit-type="main"
+                                             cmd-icon="Add"
+                                             sit-name="com.siemens.customcommand.assign"
+                                             sit-tooltip="{{ 'SIT.PRGR.commandBarAddPerson' | translate }}"
+                                             ng-click="vm.addPersonButtonHandler"
+                                             sit-label="{{ 'SIT.PRGR.commandBarAddPerson' | translate }}"
+                                             ng-show="true">
+                                </sit-command>
+                            </sit-command-bar>
+                        </div>
+                    </td>
+                    <td style="width:20%;">
+                        <div style="width:200px;float:right;display:inline;">
+                            <sit-command-bar sit-type="Tool" sit-label-align="right">
+                                <sit-command sit-type="command"
+                                             cmd-icon="Trash"
+                                             sit-name="com.siemens.customcommand.unassing"
+                                             sit-tooltip="{{ 'SIT.PRGR.commandBarRemove' | translate }}"
+                                             ng-click="vm.removeButtonHandler"
+                                             sit-label="{{ 'SIT.PRGR.commandBarRemove' | translate }}"
+                                             ng-show="vm.isButtonVisible">
+                                </sit-command>
+                            </sit-command-bar>
+                        </div>
+                    </td>
+                    </tr>
+                </table>
+                        <div style="width:100%;height:100%;align-self:center;float:right;display:inline;">
+                            <sit-item-collection-viewer sit-id="AssignedPersons" sit-data="vm.viewerData" sit-options="vm.viewerOptions"></sit-item-collection-viewer>
+                        </div>
+</div>
+    </div>
+</sit-side-panel>

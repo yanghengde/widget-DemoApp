@@ -37,6 +37,7 @@
             self.selectButtonHandler = selectButtonHandler;
             self.deleteButtonHandler = deleteButtonHandler;
             self.addPersonButtonHandler = addPersonButtonHandler;
+            self.taddPersonButtonHandler = taddPersonButtonHandler;
         }
 
         function initGridOptions() {
@@ -98,6 +99,10 @@
         function addPersonButtonHandler(clickedCommand) {
             $('#myModalRevoke').modal('show',{ id: self.selectedItem.Id, selectedItem: self.selectedItem });
             return;
+        }
+
+        function taddPersonButtonHandler(clickedCommand) {
+            $state.go(rootstate + '.addPersonToTeam', { id: self.selectedItem.Id, selectedItem: self.selectedItem });
         }
 
         function editButtonHandler(clickedCommand) {

@@ -96,6 +96,8 @@
     <Content Include="Siemens.Mom.Presales.Training.DemoApp\modules\Team\TeamScreen-edit.html" />
     <Content Include="Siemens.Mom.Presales.Training.DemoApp\modules\Team\TeamScreen-list-ctrl.js" />
     <Content Include="Siemens.Mom.Presales.Training.DemoApp\modules\Team\TeamScreen-list.html" />
+    <Content Include="Siemens.Mom.Presales.Training.DemoApp\modules\Team\TeamScreen-Person-Add-list.html" />
+    <Content Include="Siemens.Mom.Presales.Training.DemoApp\modules\Team\TeamScreen-Person-Add-list.js" />
     <Content Include="Siemens.Mom.Presales.Training.DemoApp\modules\Team\TeamScreen-select-ctrl.js" />
     <Content Include="Siemens.Mom.Presales.Training.DemoApp\modules\Team\TeamScreen-select.html" />
     <Content Include="Siemens.Mom.Presales.Training.DemoApp\modules\Team\TeamScreen-srv.js" />
