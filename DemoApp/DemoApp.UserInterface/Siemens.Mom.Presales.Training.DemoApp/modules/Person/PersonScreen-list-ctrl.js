@@ -131,7 +131,7 @@
 
             function findAll(opt) {
                 var options = opt.options;
-                return dataService.findAll(options);
+                return dataService.getAll(options);
             }
         }
 

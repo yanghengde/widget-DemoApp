@@ -1,40 +1,42 @@
-/* SIMATIC Unified Architecture V 1.2 | Copyright (C) Siemens AG 2015. All Rights Reserved. */
-(function() {
+﻿(function () {
     'use strict';
 
-    /**
-     * @ngdoc module
-     * @name siemens.simaticit.app
-
-     */
     var app = angular.module('siemens.simaticit.app', [
-        // Angular modules
-        'ngAnimate',        // animations
+        // Angular modules 
+        'ngAnimate',        
         'ui.router',
-        'ngSanitize',       // sanitizes html bindings (ex: sidebar.js)
+        'ngSanitize',       
         'ngResource',
-
-        /*jshint laxcomma:true */
+		'gridster',
 
         // 3rd Party Modules
-        'ui.bootstrap'  // ui-bootstrap (ex: carousel, pagination, dialog),
+        'ui.bootstrap'  
 
-        //local modules
-        , 'siemens.simaticit.common'
-
-        //TODO: It is necessary to add the reference to the root AngularJS Module as a dependency
-        //for the siemens.simaticit.app module 
-
-
-
-
-
+        // Local modules
+        ,'siemens.simaticit.common',
+		,'Siemens.Mom.Presales.Training.DemoApp.Person'
+        ,'Siemens.Mom.Presales.Training.DemoApp.Team'
+        
+		,'Siemens.Mom.Presales.Training.DemoApp'
+		
     ]);
 
-    app.run(['$rootScope', '$state', '$stateParams', 'RESOURCE', 'THEMES', 'common',
-        function ($rootScope, $state, $stateParams, RESOURCE, THEMES, common) {
+	var modules = [
+		 'Siemens.Mom.Presales.Training.DemoApp.Person',
+		 'Siemens.Mom.Presales.Training.DemoApp.Team',
+		
+	];
+    // initialize the modules one by one
+    for (var index = 0; index < modules.length; index++) {
+        angular.module(modules[index], []);
+    }
+
+    app.run(['$rootScope', '$state', '$translate', '$stateParams','RESOURCE',  'THEMES', 'common','debug','$location','common.services.modelDriven.service',
+        function ($rootScope, $state, $translate, $stateParams, RESOURCE,  THEMES, common, debug, $location, mdService) {
+           
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
+		$rootScope.layoutMode = 'full';
         common.shell.setEnvironment(RESOURCE, THEMES);
 
         $rootScope.globalOverlayData = {
@@ -42,17 +44,25 @@
             title: '',
             buttons: {}
         };
-
+		$rootScope.globalDialogData = {
+            title: '',
+            templatedata: '',
+            templateuri: '',
+            buttons: {}
+        };
         $rootScope.globalBusyIndicator ={
             id: 'globalBusyIndicatorId',
-            message:'Working...',
-            icon:'fa fa-spinner fa-2x fa-spin'
+            icon:'fa fa-spinner fa-spin fa-pulse',
+            delay: 0
         };
 
-        common.authentication.init();
+            $rootScope.$on('common.services.globalization.globalizationService.setLanguage', function () {
+				localStorage.setItem("unauthorizedTitle", $translate.instant('common.unauthorize.title'));
+                localStorage.setItem("unauthorizedMessage", $translate.instant('common.unauthorize.message'));
+            });
 
-
+        mdService.initModules(modules);
+		common.authentication.init();
+       
     }]);
 })();
-
-

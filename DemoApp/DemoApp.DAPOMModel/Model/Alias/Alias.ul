@@ -6,3 +6,4 @@ PUBLISH COMMAND Siemens.Mom.Presales.Training.MasterData.DemoLib.MSModel.Command
 PUBLISH COMMAND Siemens.Mom.Presales.Training.MasterData.DemoLib.MSModel.Commands.DeleteTeam AS DeleteTeam
 PUBLISH COMMAND Siemens.Mom.Presales.Training.MasterData.DemoLib.MSModel.Commands.UpdatePerson AS UpdatePerson
 PUBLISH COMMAND Siemens.Mom.Presales.Training.MasterData.DemoLib.MSModel.Commands.UpdateTeam AS UpdateTeam
+PUBLISH COMMAND Siemens.Mom.Presales.Training.MasterData.DemoLib.MSModel.Commands.AssignPersonToTeam AS AssignPersonToTeam

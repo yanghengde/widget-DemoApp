@@ -8,6 +8,12 @@
         "Edit":"Edit Page",
         "Team":"Team Page",
         "Save":"Confirm",
-        "Cancel":"Cancel"
+        "Cancel":"Cancel",
+        "addToTeamTitle":"Add Person To Team",
+        "Pserson":{
+            "FirstName":"FirstName",
+            "LastName":"LastName"
+        }
+
     }
 }

@@ -2,24 +2,24 @@
     'use strict';
     angular.module('Siemens.Mom.Presales.Training.DemoApp.Team').config(AddPersonToTeamConfig);
         
-        AddPersonToTeamController.$inject=['Siemens.SimaticIT.Personnel.PersonnelManager.AssignPersonsToGroup.service', '$q', '$state', '$stateParams', '$rootScope', '$scope', 'common.base', 'common.services.logger.service', '$translate', 'common.services.modelDriven.runtimeService', 'prEventDispatcherService'];
-         function AddPersonToTeamController(dataService, $q, $state, $stateParams, $rootScope, $scope, base, loggerService, $translate, mdRuntimeSvc, eventDispatcherService) {
+        AddPersonToTeamController.$inject=['Siemens.Mom.Presales.Training.DemoApp.Team.TeamScreen.service','Siemens.Mom.Presales.Training.DemoApp.Person.PersonScreen.service', '$q', '$state', '$stateParams', '$rootScope', '$scope', 'common.base', 'common.services.logger.service', '$translate', 'common.services.modelDriven.runtimeService', 'prEventDispatcherService'];
+         function AddPersonToTeamController(dataService, personService,$q, $state, $stateParams, $rootScope, $scope, base, loggerService, $translate, mdRuntimeSvc, eventDispatcherService) {
             var self = this;
             var logger, backendService;
             var sidePanelManager = base.services.sidePanel.service;
             self.onCustomActionComplete = null;
             self.validInputs = true;
             self.cancel = cancel;
-            self.title = $translate.instant('SIT.PRGR.assignPersonsToGroupManagementTitle');
+            self.title = $translate.instant('Siemens.Mom.Presales.Training.DemoApp.addToTeamTitle');
 
             var initObj = mdRuntimeSvc.initCustomAction(); //gets the callback function
             self.onCustomActionComplete = initObj && initObj.onExit ? initObj.onExit : null;
-            sidePanelManager.setTitle($translate.instant('SIT.PRGR.assignPersonsToGroupManagementTitle'));
+            sidePanelManager.setTitle($translate.instant('Siemens.Mom.Presales.Training.DemoApp.addToTeamTitle'));
             sidePanelManager.open('e'); //show the panel
 
             self.closeButton = {
                 showClose: true,
-                tooltip: $translate.instant("SIT.PR.common.cancel"),
+                tooltip: $translate.instant("Siemens.Mom.Presales.Training.DemoApp.Cancel"),
                 onClick: self.cancel
             };
 
@@ -27,7 +27,7 @@
 
             // Initialization function
             function activate() {
-                logger = loggerService.getModuleLogger('Siemens.SimaticIT.Personnel.PersonnelManager.AssignPersonsToGroup');
+                logger = loggerService.getModuleLogger('Siemens.Mom.Presales.Training.DemoApp.Team');
 
                 init();
             }
@@ -61,8 +61,8 @@
             function setActionButtons() {
                 self.actionButtons = [
                                     {
-                                        label: $translate.instant("SIT.PR.common.cancel"),
-                                        tooltip: $translate.instant("SIT.PR.common.cancel"),
+                                        label: $translate.instant("Siemens.Mom.Presales.Training.DemoApp.Cancel"),
+                                        tooltip: $translate.instant("Siemens.Mom.Presales.Training.DemoApp.Cancel"),
                                         onClick: self.cancel,
                                         enabled: true,
                                         visible: true
@@ -85,30 +85,27 @@
                     showRowHighlight: true,
                     quickSearchOptions: {
                         enabled: true,
-                        field: 'NId',
+                        field: 'FirstName',
                         filterText: ''
                     },
                     sortInfo: {
-                        field: 'NId',
+                        field: 'FirstName',
                         direction: 'asc',
                         fields: [
-                            { field: 'NId', displayName: $translate.instant('SIT.PRGR.personGroup.id') },
-                            { field: 'FirstName', displayName: $translate.instant('SIT.PRGR.personGroup.name') },
-                            { field: 'LastName', displayName: $translate.instant('SIT.PRGR.personGroup.surname') },
-                            { field: 'FullName', displayName: $translate.instant('SIT.PRGR.personGroup.fullName') },
-                            { field: 'UserName', displayName: $translate.instant('SIT.PRGR.personGroup.userId') }
+                            { field: 'FirstName', displayName: $translate.instant('Siemens.Mom.Presales.Training.DemoApp.Pserson.FirstName') },
+                            { field: 'LastName', displayName: $translate.instant('Siemens.Mom.Presales.Training.DemoApp.Pserson.LastName') }
                         ]
                     },
                     image: 'svg cmdUser24',
                     gridConfig: {
                         showSelectionCheckbox: true,
                         columnDefs: [
-                            { field: 'NId', displayName: $translate.instant('SIT.PRGR.personGroup.id') },
-                            { field: 'FirstName', displayName: $translate.instant('SIT.PRGR.personGroup.name') },
-                            { field: 'LastName', displayName: $translate.instant('SIT.PRGR.personGroup.surname') },
-                            { field: 'FullName', displayName: $translate.instant('SIT.PRGR.personGroup.fullName') },
-                            { field: 'UserName', displayName: $translate.instant('SIT.PRGR.personGroup.userId') },
-                            { field: '', width: 90, displayName: '', removeSingleElement: self.removeSingleElement, groupId: self.currentGroupId, cellTemplate: '<prgr-single-remove-button row="row.entity" groupid="col.colDef.groupId" on-remove="col.colDef.removeSingleElement(id)"/>', sortable: false } //on-Remove: self.removeSingleElement
+                            {field: 'FirstName', displayName: 'FirstName'},
+                            {field: 'LastName', displayName: 'LastName'},
+                            {field: 'Sex', displayName: 'Sex',cellTemplate: '<div class="ngCellText" ng-class="col.colIndex()"><span>{{row.entity.Sex === 0 ? "男" : row.entity.Sex === 1 ? "女" : "其它"}} <\span></div>'},
+                            {field: 'Age', displayName: 'Age'},
+                            {field: 'Birthday', displayName: 'Birthday',cellFilter: 'date:\'yyyy-MM-dd\'', resizable: true,sortable: true,width : 100},
+                            {field: 'IsActive', displayName: 'IsActive'}
                         ]
                     },
                     onSelectionChangeCallback: onGridItemSelectionChanged
@@ -120,14 +117,14 @@
                     disableEP: false,
                     id: "entityPickerId",
                     datasource: function (searchString) {
-                        return getPersonGridData({ options: "$top=50&$filter=startswith(NId, '" + replaceSpecialCharacters(searchString) + "') eq true and (PersonGroups/all(w: w/Id ne " + self.currentGroupId + "))&$expand=PersonGroups" }).then(function (data) {
+                        return getPersonGridData({ options: "$top=50&$filter=startswith(NId, '" + replaceSpecialCharacters(searchString) + "') eq true and (Teams/all(w: w/Id ne " + self.currentGroupId + "))&$expand=Teams" }).then(function (data) {
                             return data;
                         });
                     },
                     limit: 5,
                     waitTime: 500,
                     placeholder: $translate.instant('SIT.PRGR.entityPickerPlaceHolder'),
-                    attributetodisplay: "NId",
+                    attributetodisplay: "FirstName",
                     entityValue: "",
                     editable: true,
                     required: false,
@@ -138,23 +135,24 @@
                     return {
                         gridConfig: {
                             columnDefs: [
-                            { field: 'NId', displayName: $translate.instant('SIT.PRGR.personGroup.id') },
-                            { field: 'FirstName', displayName: $translate.instant('SIT.PRGR.personGroup.name') },
-                            { field: 'LastName', displayName: $translate.instant('SIT.PRGR.personGroup.surname') },
-                            { field: 'FullName', displayName: $translate.instant('SIT.PRGR.personGroup.fullName') },
-                            { field: 'UserName', displayName: $translate.instant('SIT.PRGR.personGroup.userId') }
+                                {field: 'FirstName', displayName: 'FirstName'},
+                                {field: 'LastName', displayName: 'LastName'},
+                                {field: 'Sex', displayName: 'Sex',cellTemplate: '<div class="ngCellText" ng-class="col.colIndex()"><span>{{row.entity.Sex === 0 ? "男" : row.entity.Sex === 1 ? "女" : "其它"}} <\span></div>'},
+                                {field: 'Age', displayName: 'Age'},
+                                {field: 'Birthday', displayName: 'Birthday',cellFilter: 'date:\'yyyy-MM-dd\'', resizable: true,sortable: true,width : 100},
+                                {field: 'IsActive', displayName: 'IsActive'}
                             ]
                         },
                         quickSearchOptions: {
                             enabled: true,
-                            field: 'NId',
+                            field: 'FirstName',
                             filterText: ''
                         },
                         sortInfo: {
-                            field: 'NId',
+                            field: 'FirstName',
                             direction: 'asc',
                             fields: [
-                                { field: 'NId', displayName: $translate.instant('SIT.PRGR.personGroup.id') }
+                                { field: 'FirstName', displayName: $translate.instant('SIT.PRGR.personGroup.id') }
                             ]
                         },
                         pagingOptions: {
@@ -167,14 +165,14 @@
                         viewMode: 'g',//g: Shows data in a grid.
                         viewOptions: '',//UI elements to be shown in the viewbar
                         serverDataOptions: {
-                            dataService: dataService,
+                            dataService: personService,
                             dataEntity: 'Person',
                             optionsString: "",
-                            appName: 'Personnel',
+                            appName: 'DemoApp',
                             onBeforeDataLoadCallBack: function (data) {
                                 var top = data.pageSize;
                                 var skip = data.pageSize * (data.currentPage - 1);
-                                var fixedOption = '(PersonGroups/all(w: w/Id ne ' + self.currentGroupId + '))&$expand=PersonGroups';
+                                var fixedOption = '(Teams/Id ne ' + self.currentGroupId + ')&$expand=Teams';
                                 var filter = (data.searchText) ? ("$filter=contains(" + data.searchField + ",'" + data.searchText + "')" + " and " + fixedOption) : ("$filter=" + fixedOption);
                                 return '$top=' + top + '&$skip=' + skip + '&$count=true' + '&' + filter;
                             }
@@ -189,9 +187,10 @@
 
             function initGridData() {
                 var params = {
-                    options: "$filter=(PersonGroups/any(w: w/Id eq " + self.currentGroupId + "))&$expand=PersonGroups",
+                    options: "$filter=(Teams/Id eq " + self.currentGroupId + ")&$expand=Teams"
+                    //options: "$filter=(Teams/any(w: w/Id eq " + self.currentGroupId + "))&$expand=Teams",
                 };
-                dataService.findAll(params).then(function (data) {
+                personService.findAll(params).then(function (data) {
                     if ((data) && (data.succeeded)) {
                         self.viewerData = data.value;
                     } else {
@@ -202,7 +201,7 @@
 
             function getPersonGridData(options) {
                 var defer = $q.defer();
-                dataService.findAll(options).then(function (data) {
+                personService.findAll(options).then(function (data) {
                     defer.resolve(data.value);
                 }, function (error) {
                     defer.reject(error);

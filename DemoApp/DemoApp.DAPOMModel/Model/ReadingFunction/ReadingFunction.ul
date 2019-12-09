@@ -9,7 +9,6 @@ INPUT
     FirstName AS string
 OUTPUT
     [Optional]
-    [@AddedOnMinorVersion=03.01.00]
     [@GuidRef(d0dd6957-2522-4247-a788-fc2fbe4cb235, 0004c746-2cd7-47ad-9eaa-b18e697f5012)]
     Data AS Siemens.Mom.Presales.Training.DemoApp.DemoApp.DAPOMModel.Types.PersonType
 

@@ -45,7 +45,8 @@
             return execGetAll(options);
         }
 
-        function findAll(options) {
+        function findAll(opt) {
+            var options = opt.options;
             return execGetAll(options);
         }
 

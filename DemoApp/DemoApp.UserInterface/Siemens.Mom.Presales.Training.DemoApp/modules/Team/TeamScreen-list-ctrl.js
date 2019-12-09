@@ -2,8 +2,8 @@
     'use strict';
     angular.module('Siemens.Mom.Presales.Training.DemoApp.Team').config(ListScreenRouteConfig);
 
-    ListScreenController.$inject = ['Siemens.Mom.Presales.Training.DemoApp.Team.TeamScreen.service', '$state', '$stateParams', '$rootScope', '$scope', 'common.base', 'common.services.logger.service','$translate'];
-    function ListScreenController(dataService, $state, $stateParams, $rootScope, $scope, base, loggerService,$translate) {
+    ListScreenController.$inject = ['$q', 'common.services.runtime.SystemDataService','Siemens.Mom.Presales.Training.DemoApp.Team.TeamScreen.service', '$state', '$stateParams', '$rootScope', '$scope', 'common.base', 'common.services.logger.service','$translate','common.services.authentication'];
+    function ListScreenController($q,systemDataService,dataService, $state, $stateParams, $rootScope, $scope, base, loggerService,$translate,authenticationService) {
         var self = this;
         var logger, rootstate, messageservice, backendService;
 
@@ -38,6 +38,35 @@
             self.deleteButtonHandler = deleteButtonHandler;
             self.addPersonButtonHandler = addPersonButtonHandler;
             self.taddPersonButtonHandler = taddPersonButtonHandler;
+
+            self.IsActive = getIsActiveValue();
+            self.IsLeader = getIsLeaderValue();
+            self.save = save;
+            console.log('1111111111111111111111111111111111111111111111111');
+            console.log(GetUserInfos());
+        }
+
+        function GetUserInfos() {
+            var loggedUser = authenticationService.getUser();
+            console.log('222222222222222222222222222222222222222222222222222');
+            console.log(loggedUser);
+            var def = $q.defer();
+            var abc = systemDataService.findAll('User', "$filter=Name eq '" + loggedUser.unique_name + "'");
+            console.log('3333333333333333333333333333333333333333333333333333');
+            console.log(abc);
+            abc.then(onSuccess, errorCallback);
+            return def.promise;
+            function onSuccess() {
+                def.resolve(true);
+            }
+
+            function errorCallback(reject) {
+                if (reject.data.error.errorCode === '3001') {
+                    def.resolve(false); //Authorization failed for logged user. He is not assigned to AccessControlViewer or AccessControlAdmin Role and he doesn't belong to group SIT_UAF_SYSADMIN.
+                    return;
+                }
+                def.resolve(true);
+            }
         }
 
         function initGridOptions() {
@@ -96,9 +125,40 @@
             $state.go(rootstate + '.add');
         }
 
-        function addPersonButtonHandler(clickedCommand) {
-            $('#myModalRevoke').modal('show',{ id: self.selectedItem.Id, selectedItem: self.selectedItem });
+        function addPersonButtonHandler() {
+            $('#myModalRevoke').modal('show');
             return;
+        }
+
+        function getIsActiveValue(){
+            return [{
+                label: "IsActive",
+                checked: false
+              }];
+        }
+
+        function onSaveSuccess(data) {
+            //$('#myModalRevoke').modal("close");
+            $('#myModalRevoke').modal('hide');
+            //$(".modal-backdrop.fade").hide();
+            $state.go('^', {}, { reload: true });
+        }
+
+        function getIsLeaderValue(){
+            return [{
+                label: "IsLeader",
+                checked: false
+              }];
+        }
+
+        function registerEvents() {
+            $scope.$on('sit-property-grid.validity-changed', onPropertyGridValidityChange);
+        }
+
+        function save() {
+            self.currentItem.IsActive = self.IsActive[0].checked;
+            self.currentItem.IsLeader = self.IsLeader[0].checked;
+            dataService.create(self.currentItem).then(onSaveSuccess, backendService.backendError);
         }
 
         function taddPersonButtonHandler(clickedCommand) {

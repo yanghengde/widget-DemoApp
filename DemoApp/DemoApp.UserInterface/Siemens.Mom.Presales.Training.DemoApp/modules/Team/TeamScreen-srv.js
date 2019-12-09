@@ -34,6 +34,7 @@
         }
 
         function exposeApi() {
+            self.findAll = getAll;
             self.getAll = getAll;
             self.create = createEntity;
             self.update = updateEntity;

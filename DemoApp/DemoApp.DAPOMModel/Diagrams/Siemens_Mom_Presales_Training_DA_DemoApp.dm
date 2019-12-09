@@ -29,8 +29,8 @@
         <IsExpandedC>false</IsExpandedC>
       </ArtifactSuo>
       <ArtifactSuo>
-        <X>182</X>
-        <Y>153</Y>
+        <X>79</X>
+        <Y>160</Y>
         <FullName>Siemens.Mom.Presales.Training.DemoApp.DemoApp.DAPOMModel.DataModel.Person</FullName>
         <IsExpandedA>true</IsExpandedA>
         <IsExpandedB>false</IsExpandedB>
